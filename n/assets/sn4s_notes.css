@@ -68,7 +68,7 @@ footer {
 
  /* Note Page */
 .chapter {
-  font-size: 1.5em;
+  font-size: xx-large;
   font-family: auto;
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
@@ -86,7 +86,7 @@ footer {
 }
 
 .note {
-  font-size: 1.3em;
+  font-size: x-large;
   line-height: 1.4em;
   font-family: monospace;
   color: #555;
@@ -100,7 +100,7 @@ footer {
 
 .quote {
   display: none; /* 默认隐藏quote */
-  font-size: 1.2em;
+  font-size: x-large;
   line-height: 1.4em;
   font-family: "KaiTi SC";
   color: #555;
