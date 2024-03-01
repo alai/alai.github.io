@@ -5,15 +5,21 @@
   --quote-background-color: rgb(249, 246, 215); /* quote背景 */
   --chapter-title-background-color: linen; /* 章节标题背景 */
   --text-color: #555; /* 文字颜色 */
+  --default-font-size: 32px;
+  --chapter-font-size: 48px;
 }
 
 /* 夜间模式的颜色 */
 [data-theme='dark'] {
   --background-color: #212214; /* 页面背景 */
   --note-background-color: #212214; /* note背景 */
-  --quote-background-color: #darkslategray; /* quote背景 */
+  --quote-background-color: darkslategray; /* quote背景 */
   --chapter-title-background-color: #404040; /* 章节标题背景 */
   --text-color: darkgray; /* 文字颜色 */
+}
+
+p {
+  font-size: var(--default-font-size);
 }
 
 @media only screen and (max-width: 450px) {
@@ -87,7 +93,7 @@ footer {
 
  /* Note Page */
 .chapter {
-  font-size: xx-large;
+  font-size: var(--chapter-font-size);
   font-family: auto;
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
@@ -105,8 +111,8 @@ footer {
 }
 
 .note {
-  font-size: x-large;
-  line-height: 1.4em;
+  font-size: var(--default-font-size);
+  line-height: 2em;
   font-family: monospace;
   color: var(--text-color);
   text-align: justify;
@@ -119,9 +125,9 @@ footer {
 
 .quote {
   display: none; /* 默认隐藏quote */
-  font-size: x-large;
-  line-height: 1.4em;
-  font-family: "STKaiti";
+  font-size: var(--default-font-size);
+  line-height: 2em;
+  font-family: "Kaiti SC Regular";
   color: var(--text-color);
   background-color: var(--quote-background-color);
   text-align: justify;
@@ -153,6 +159,6 @@ footer {
     background-color: var(--background-color);
     position: fixed;
     right: 0;
-    font-size: xx-large;
+    font-size: var(--chapter-font-size);
     border: none;
   }
