@@ -1,3 +1,21 @@
+/* 日间模式的颜色 */
+:root {
+  --background-color: #feffef; /* 页面背景 */
+  --note-background-color: #feffef; /* note背景 */
+  --quote-background-color: rgb(249, 246, 215); /* quote背景 */
+  --chapter-title-background-color: linen; /* 章节标题背景 */
+  --text-color: #555; /* 文字颜色 */
+}
+
+/* 夜间模式的颜色 */
+[data-theme='dark'] {
+  --background-color: #212214; /* 页面背景 */
+  --note-background-color: #212214; /* note背景 */
+  --quote-background-color: #darkslategray; /* quote背景 */
+  --chapter-title-background-color: #404040; /* 章节标题背景 */
+  --text-color: darkgray; /* 文字颜色 */
+}
+
 @media only screen and (max-width: 450px) {
     /* CSS for mobile devices */
     #page {
@@ -52,7 +70,8 @@ grid-area: foot;
 }
 
 body {
-  background: #feffef;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 
 footer {
@@ -78,7 +97,7 @@ footer {
   padding-bottom: 1em;
   padding-right: 100px;
   padding-left: 20px;
-  background: linen;
+  background: var(--chapter-title-background-color);
 }
 
 .chapter::before{
@@ -89,7 +108,7 @@ footer {
   font-size: x-large;
   line-height: 1.4em;
   font-family: monospace;
-  color: #555;
+  color: var(--text-color);
   text-align: justify;
   padding-left: 2em;
   padding-right: 5em;
@@ -102,9 +121,9 @@ footer {
   display: none; /* 默认隐藏quote */
   font-size: x-large;
   line-height: 1.4em;
-  font-family: "KaiTi SC";
-  color: #555;
-  background-color: rgb(249,246,215);
+  font-family: "STKaiti";
+  color: var(--text-color);
+  background-color: var(--quote-background-color);
   text-align: justify;
   padding-left: 2em;
   padding-right: 5em;
@@ -127,4 +146,13 @@ footer {
     position: fixed;
     top: 0;
     margin-left: -8px;
+  }
+
+  #toggleMode {
+    /* align to right */
+    background-color: var(--background-color);
+    position: fixed;
+    right: 0;
+    font-size: xx-large;
+    border: none;
   }

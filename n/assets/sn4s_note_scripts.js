@@ -25,6 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('toggleMode');
+    toggleButton.addEventListener('click', function() {
+        if (document.body.getAttribute('data-theme') === 'dark') {
+            // 如果当前是夜间模式，切换到日间模式
+            document.body.removeAttribute('data-theme');
+            toggleButton.textContent = '🌚';
+        } else {
+            // 如果当前是日间模式，切换到夜间模式
+            document.body.setAttribute('data-theme', 'dark');
+            toggleButton.textContent = '😎';
+        }
+    });
+});
+
+
 // ** A top reading progress bar **
 let processScroll = () => {
     let docElem = document.documentElement, 
