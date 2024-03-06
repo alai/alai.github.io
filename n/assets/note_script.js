@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取按钮元素
     const moonButton = document.querySelector('.floating-bar button:first-child');
     const upButton = document.querySelector('.floating-bar button:nth-child(2)');
-    const downButton = document.querySelector('.floating-bar button:last-child');
+    const downButton = document.querySelector('.floating-bar button:nth-child(3)');
+    const quotesButton = document.querySelector('.floating-bar button:last-child');
   
     // 1. 实现 Dark Mode 切换功能
     moonButton.addEventListener('click', function() {
@@ -119,5 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. 实现页面滚动到页尾功能
     downButton.addEventListener('click', function() {
        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    });
+
+    // 4. 实现显示/隐藏引用功能
+    quotesButton.addEventListener('click', function() {
+        const quotes = document.querySelectorAll('.quote');
+        quotes.forEach(function(quote) {
+            quote.style.display = quote.style.display === 'none' ? 'block' : 'none';
+        });
     });
   });
