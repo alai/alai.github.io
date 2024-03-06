@@ -7,4 +7,4 @@ categories: notes reading
 Raw notes here:
 - [Book 牛津通识读本：现代日本][book-oup-001]
 
-[book-oup-001]: ../n/OUP-Morden_Japan.html
+[book-oup-001]: ../../../../../n/OUP-Morden_Japan.html
