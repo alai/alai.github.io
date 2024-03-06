@@ -1,0 +1,192 @@
+/* 日间模式的颜色 */
+:root {
+  --background-color: #f5f5f5; /* 页面背景 */
+  --note-background-color: #fff; /* note背景 */
+  --quote-background-color: lightgoldenrodyellow; /* quote背景 */
+  --quote-border-color: #ccc; /* quote边框 */
+  --book-name-color: #aaa; /* 书名颜色 */
+  --chapter-title-color: #444; /* 章节标题颜色 */
+  --card-button-color: #ccc; /* 按钮颜色 */
+  --text-color: #444; /* 文字颜色 */
+  --default-font-size: 32px;
+  --chapter-font-size: 48px;
+}
+
+/* 夜间模式的颜色 */
+[data-theme='dark'] {
+  --background-color: #37373f; /* 页面背景 */
+  --note-background-color: #181818; /* note背景 */
+  --quote-background-color: #233341; /* quote背景 */
+  --chapter-title-background-color: #404040; /* 章节标题背景 */
+  --text-color: darkgray; /* 文字颜色 */
+  --quote-border-color: #606364; /* quote边框 */
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+layout-header {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+}
+
+main {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.review-card {
+  background-color: var(--note-background-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2em;
+}
+
+.card-header {
+  display:flex;
+  flex-wrap: wrap;
+  align-items:end;
+  /* margin-bottom: 1rem; */
+  padding: 1em;
+}
+
+.card-content p {
+  line-height: 1.5;
+  padding-top: 0.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 1em;
+}
+
+.quote {
+  /* display:flex; */
+  display: none;
+  flex-direction: column;
+  /* align-items: center; */
+  background-color: var(--quote-background-color);
+  line-height: 1.5;
+  /* margin-top: 1.5em; */
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  /* padding-top: 0.5em; */
+  padding-bottom: 2em;
+  border-top: dashed 1px var(--quote-border-color);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+h1::before {
+  content: "📖 ";
+  font-size: 1rem;
+  margin-right: 0.2rem;
+}
+
+h2 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--book-name-color);
+  font-style: italic;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  margin-right: 1.5em;
+  /* font-size: 0.9rem; */
+  color: var(--card-button-color);
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: x-small;
+  text-transform:capitalize;
+  text-decoration: dashed;
+}
+
+.current {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+footer {
+  margin-top: 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.show-quote {
+  padding-left: 1.5em;
+}
+
+.link-to-note {
+  text-transform:lowercase;
+  display: none;
+};
+
+.link-to-note::before {
+  content: "❖    ";
+}
+
+.tooltip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-80%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+/* Float bar*/
+.floating-bar {
+  position: fixed;
+  bottom: 25px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.floating-bar button {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+  background-color: #aaa;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px; /* 调整图标大小 */
+}

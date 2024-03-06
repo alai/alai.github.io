@@ -1,0 +1,171 @@
+/* 日间模式的颜色 */
+:root {
+  --background-color: #f5f5f5; /* 页面背景 */
+  --note-background-color: #fff; /* note背景 */
+  --quote-background-color: lightgoldenrodyellow; /* quote背景 */
+  --quote-border-color: #ccc; /* quote边框 */
+  --book-name-color: #aaa; /* 书名颜色 */
+  --chapter-title-color: #444; /* 章节标题颜色 */
+  --card-button-color: #ccc; /* 按钮颜色 */
+  --text-color: #444; /* 文字颜色 */
+  --default-font-size: 32px;
+  --chapter-font-size: 48px;
+}
+
+/* 夜间模式的颜色 */
+[data-theme='dark'] {
+  --background-color: #37373f; /* 页面背景 */
+  --note-background-color: #181818; /* note背景 */
+  --quote-background-color: #233341; /* quote背景 */
+  --chapter-title-background-color: #404040; /* 章节标题背景 */
+  --text-color: darkgray; /* 文字颜色 */
+  --quote-border-color: #606364; /* quote边框 */
+}
+
+/* Color Tags */
+span.tag[data-tag="Note"] {
+	background: var(--note-background-color);
+  color: rgb(153,153,153);
+	background-size: 100%;
+  font-family: "Avenir Next Condensed";
+  padding: 1px 4px 1px 4px;
+  font-size: 0.9em;
+  line-height: 1em;
+  font-weight: 500;
+  border-radius: 5px 5px 5px 5px;
+  border-color: #666;
+  position:relative;
+}
+
+span.tag[data-tag="Note"]:after {
+  content:"✎";
+  margin-left: .3em;
+}
+
+span.tag[data-tag="IDNBF"] {
+	background: var(--note-background-color);
+  color: #94716B;
+	background-size: 100%;
+  font-family: "Avenir Next Condensed";
+  padding: 1px 4px 1px 4px;
+  font-size: 12px;
+  line-height: 1em;
+  font-weight: 500;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: #B58C85;
+  border-width: thin;
+  position:relative;
+}
+
+span.tag[data-tag="quotemark"]:before {
+  content: "“";
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: lightgray;
+  display: block;
+  font-size: xxx-large;
+  margin-block-end: -0.6em;
+}
+
+span.tag[data-tag="MyThoughts"] {
+	background: var(--note-background-color);
+  	color: #58778D;
+	background-size: 100%;
+    font-family: "Avenir Next Condensed";
+    padding: 1px 4px 1px 4px;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: 500;
+  	border-width: thin;
+    position:relative;
+}
+
+span.tag[data-tag="MyThoughts"]:before {
+  content: "⇢";
+  margin-right: .2em;
+}
+
+span.tag[data-tag="ANECDOTE"] {
+	background: var(--note-background-color);
+  	color: #8BC34A;
+	background-size: 100%;
+    font-family: "Avenir Next Condensed";
+    padding: 1px 4px 1px 4px;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: 500;
+    border-radius: 5px 5px 5px 5px;
+   	border-style: solid;
+  	border-color: #8BC34A;
+  	border-width: thin;
+    position:relative;
+    white-space: nowrap;
+}
+
+span.tag[data-tag="ANECDOTE"]:after {
+  content:"🍵";
+  margin-left: .3em;
+}
+
+span.tag[data-tag="EUREKA"] {
+	background: var(--note-background-color);
+  	color: #D05FA3;
+	background-size: 100%;
+    font-family: "Avenir Next Condensed";
+    padding: 1px 4px 1px 4px;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: 500;
+    border-radius: 3px;
+   	border-style: solid;
+  	border-color: #FF92D3;
+  	border-width: thin;
+    position:relative;
+}
+
+span.tag[data-tag="MAKESENSE"] {
+	background: var(--note-background-color);
+  	color: #507B58;
+  	font-family: "Avenir Next Condensed";
+    padding: 1px 4px 1px 4px;
+    background-size: 100%;
+  	font-size: 12px;
+    line-height: 1em;
+    font-weight: 500;
+    border-radius: 3px 3px 3px 3px;
+   	border-style: solid;
+  	border-color: #6BA275;
+  	border-width: thin;
+    position:relative;
+}
+
+span.tag[data-tag="Q"] {
+  color: #E15973;
+  font-weight: 600;
+  font-family: "Avenir Next Condensed";
+}
+span.tag[data-tag="Q"]:after {
+  content: ':'
+}
+
+span.tag[data-tag="gist"] {
+	background: var(--note-background-color);
+  	color: rgb(96,151,125);
+	background-size: 100%;
+    font-family: "Avenir Next Condensed";
+    padding: 1px 4px 1px 4px;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: 500;
+    border-radius: 5px 5px 5px 5px;
+   	border-style: solid;
+  	border-color: rgb(84,134,99);
+  	border-width: thin;
+    position:relative;
+    white-space: nowrap;
+}
+
+span.tag[data-tag="gist"]:after {
+  content:"🍀";
+  margin-left: .3em;
+}
