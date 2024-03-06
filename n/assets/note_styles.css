@@ -4,6 +4,8 @@
   --note-background-color: #fff; /* note背景 */
   --quote-background-color: lightgoldenrodyellow; /* quote背景 */
   --quote-border-color: #ccc; /* quote边框 */
+  --button-font-color: #aaa; /* 按钮颜色 */
+  --button-background-color: rgba(51, 51, 51, 0.05); /* 按钮背景 */
   --book-name-color: #aaa; /* 书名颜色 */
   --chapter-title-color: #444; /* 章节标题颜色 */
   --card-button-color: #ccc; /* 按钮颜色 */
@@ -19,7 +21,10 @@
   --quote-background-color: #233341; /* quote背景 */
   --chapter-title-background-color: #404040; /* 章节标题背景 */
   --text-color: darkgray; /* 文字颜色 */
+  --book-name-color: #5e5e5e; /* 书名颜色 */
+  --button-color: #5e5e5e; /* 按钮颜色 */
   --quote-border-color: #606364; /* quote边框 */
+  --button-background-color: rgba(255, 255, 255, 0.05); /* 按钮背景 */
 }
 
 
@@ -189,4 +194,51 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: 10px; /* 调整图标大小 */
+}
+
+/* Dev single card mode */
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card {
+  display: block; /* 默认显示所有卡片 */
+}
+
+.single-card-mode .review-card {
+  display: none; /* 在单张卡片模式下隐藏所有卡片 */
+}
+
+.single-card-mode .review-card.active {
+  display: block; /* 仅显示当前活动卡片 */
+}
+
+.controls {
+  /* display: flex; */
+  display: none;
+  justify-content: space-between;
+}
+
+.controls button {
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: var(--button-font-color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }

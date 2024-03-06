@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
   noteIcons.forEach(function (noteIcon) {
     noteIcon.addEventListener("click", function () {
       // 获取对应的 link-to-note 元素
-      var linkToNote = this.parentElement.parentElement.querySelector(".link-to-note");
+      var linkToNote =
+        this.parentElement.parentElement.querySelector(".link-to-note");
 
       // 切换 link-to-note 元素的显示/隐藏状态
       if (linkToNote.style.display === "none") {
@@ -47,7 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 获取 link-to-note 元素
-    var linkToNote = noteIcon.parentElement.parentElement.querySelector(".link-to-note");
+    var linkToNote =
+      noteIcon.parentElement.parentElement.querySelector(".link-to-note");
 
     // 为 link-to-note 元素添加点击事件监听器
     linkToNote.addEventListener("click", function (event) {
@@ -89,44 +91,113 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 获取按钮元素
-    const moonButton = document.querySelector('.floating-bar button:first-child');
-    const upButton = document.querySelector('.floating-bar button:nth-child(2)');
-    const downButton = document.querySelector('.floating-bar button:nth-child(3)');
-    const quotesButton = document.querySelector('.floating-bar button:last-child');
-  
-    // 1. 实现 Dark Mode 切换功能
-    moonButton.addEventListener('click', function() {
-      const htmlElement = document.documentElement;
-      htmlElement.dataset.theme = htmlElement.dataset.theme === 'dark' ? 'light' : 'dark';
-      // 1.1 切换到 Dark Mode 时，将按钮的background-color设置为 #f1c40f
-        if (htmlElement.dataset.theme === 'dark') {
-            moonButton.style.backgroundColor = '#181818';
-            upButton.style.backgroundColor = '#181818';
-            downButton.style.backgroundColor = '#181818';
-        } else {
-            moonButton.style.backgroundColor = '#aaa';
-            upButton.style.backgroundColor = '#aaa';
-            downButton.style.backgroundColor = '#aaa';
-        }
-    });
-  
-    // 2. 实现页面滚动到页顶功能
-    upButton.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  
-    // 3. 实现页面滚动到页尾功能
-    downButton.addEventListener('click', function() {
-       window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  // 获取按钮元素
+  const moonButton = document.querySelector(".floating-bar button:first-child");
+  const upButton = document.querySelector(".floating-bar button:nth-child(2)");
+  // const downButton = document.querySelector('.floating-bar button:nth-child(3)');
+  const quotesButton = document.querySelector(
+    ".floating-bar button:nth-child(3)"
+  );
+  const scardButton = document.querySelector(".floating-bar button:last-child");
 
-    // 4. 实现显示/隐藏引用功能
-    quotesButton.addEventListener('click', function() {
-        const quotes = document.querySelectorAll('.quote');
-        quotes.forEach(function(quote) {
-            quote.style.display = quote.style.display === 'none' ? 'block' : 'none';
-        });
-    });
+  // 1. 实现 Dark Mode 切换功能
+  moonButton.addEventListener("click", function () {
+    const htmlElement = document.documentElement;
+    htmlElement.dataset.theme =
+      htmlElement.dataset.theme === "dark" ? "light" : "dark";
+    // 1.1 切换到 Dark Mode 时，将按钮的background-color设置为 #f1c40f
+    if (htmlElement.dataset.theme === "dark") {
+      moonButton.style.backgroundColor = "#181818";
+      upButton.style.backgroundColor = "#181818";
+      // downButton.style.backgroundColor = '#181818';
+      quotesButton.style.backgroundColor = "#181818";
+      scardButton.style.backgroundColor = "#181818";
+      scardButton.children[0].className = "fas fa-toilet-paper";
+    } else {
+      moonButton.style.backgroundColor = "#aaa";
+      upButton.style.backgroundColor = "#aaa";
+      quotesButton.style.backgroundColor = "#aaa";
+      scardButton.style.backgroundColor = "#aaa";
+      scardButton.children[0].className = "fas fa-toilet-paper-slash";
+    }
   });
+
+  // 2. 实现页面滚动到页顶功能
+  upButton.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // 3. 实现页面滚动到页尾功能
+  // downButton.addEventListener('click', function() {
+  //    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+  // });
+
+  // 4. 实现显示/隐藏引用功能
+  let isQuotesShow = false;
+  quotesButton.addEventListener("click", function () {
+    if (isQuotesShow) {
+      quotesButton.children[0].className = "fas fa-comment-dots";
+    } else {
+      quotesButton.children[0].className = "fas fa-quote-left";
+    }
+    const quotes = document.querySelectorAll(".quote");
+    quotes.forEach(function (quote) {
+      quote.style.display = quote.style.display === "none" ? "block" : "none";
+    });
+    isQuotesShow = !isQuotesShow;
+  });
+
+  // 5. 实现单卡片功能
+  const cardContainer = document.querySelector(".card-container");
+  const reviewCards = document.querySelectorAll(".review-card");
+  const prevCardBtn = document.querySelector(".prev-card");
+  const nextCardBtn = document.querySelector(".next-card");
+  const randomCardBtn = document.querySelector(".random-card");
+  const controlBar = document.querySelector(".controls");
+
+  let currentCardIndex = 0;
+  let isSingleCardMode = false;
+
+  scardButton.addEventListener("click", toggleMode);
+
+  function showCard(index) {
+    reviewCards.forEach((card, i) => {
+      card.classList.toggle("active", i === index);
+    });
+  }
+
+  function toggleMode() {
+    isSingleCardMode = !isSingleCardMode;
+    controlBar.style.display = isSingleCardMode ? "flex" : "none";
+    cardContainer.classList.toggle("single-card-mode", isSingleCardMode);
+    prevCardBtn.disabled = !isSingleCardMode;
+    nextCardBtn.disabled = !isSingleCardMode;
+
+    if (isSingleCardMode) {
+      scardButton.children[0].className = "fas fa-toilet-paper";
+      showCard(currentCardIndex);
+    } else {
+      scardButton.children[0].className = "fas fa-toilet-paper-slash";
+    }
+  }
+
+  function showRandomCard() {
+    const randomIndex = Math.floor(Math.random() * reviewCards.length);
+    showCard(randomIndex);
+    currentCardIndex = randomIndex;
+  }
+
+  prevCardBtn.addEventListener("click", () => {
+    currentCardIndex =
+      (currentCardIndex - 1 + reviewCards.length) % reviewCards.length;
+    showCard(currentCardIndex);
+  });
+
+  nextCardBtn.addEventListener("click", () => {
+    currentCardIndex = (currentCardIndex + 1) % reviewCards.length;
+    showCard(currentCardIndex);
+  });
+
+  randomCardBtn.addEventListener("click", showRandomCard);
+});
