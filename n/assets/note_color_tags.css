@@ -37,8 +37,33 @@ span.tag[data-tag="Note"] {
   position:relative;
 }
 
+
 span.tag[data-tag="Note"]:after {
   content:"✎";
+  margin-left: .3em;
+}
+
+span.tag[data-tag="highlighted"] {
+	background: var(--note-background-color);
+  color: rgb(153,153,153);
+	background-size: 100%;
+  font-family: "Avenir Next Condensed";
+  padding: 1px 4px 1px 4px;
+  font-size: 0.9em;
+  line-height: 1em;
+  font-weight: 500;
+  position:relative;
+  border-bottom: 1mm solid rgba(211, 220, 50, .6);
+}
+}
+
+span.tag[data-tag="highlighted"]:after {
+  content:"✏️";
+  margin-left: .3em;
+}
+
+span.tag[data-tag="highlighted"]:before {
+  content:"Highlighted: ";
   margin-left: .3em;
 }
 
