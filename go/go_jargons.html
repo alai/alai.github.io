@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Jargons</title>
+    <link rel="stylesheet" href="assets/style_go.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-********" crossorigin="anonymous" />
+</head>
+<body>
+    <div id="main">
+    <!-- <div class="floating-bar">
+        <button><i class="fas fa-moon"></i></button>
+    </div> -->
+    <input type="text" id="searchBox" onkeyup="searchTable()" placeholder="Search Keywords...">
+    <h1 align="center">围棋术语对照表</h1>
+<table id="termsTable" class="table table-striped table-hover">
+<thead>
+<tr>
+<th>日文罗马音</th>
+<th>日文</th>
+<th>英文解释</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aji</td>
+<td>味</td>
+<td>taste</td>
+<td>余味</td>
+</tr>
+<tr>
+<td>aji-keshi</td>
+<td>解消味</td>
+<td>removing the taste</td>
+<td>解消余味</td>
+</tr>
+<tr>
+<td>amashi</td>
+<td>甘し</td>
+<td>-</td>
+<td>这词常用，但中文围棋术语中没有正式的翻译。原来专指江户时期执白者的一种战略，先取实地然后再侵消黑势，治理孤棋。江户时期的名家八世安井知得仙知，现代的坂田荣男、赵治勋都是“amashi”的高手。从这一意义上来说，这一词的意思就是现在所谓的“先捞后洗”。</td>
+</tr>
+<tr>
+<td>atari</td>
+<td>当たり</td>
+<td>check</td>
+<td>打吃</td>
+</tr>
+<tr>
+<td>bango</td>
+<td>番碁</td>
+<td>numbering game</td>
+<td>番棋</td>
+</tr>
+<tr>
+<td>byo-yomi</td>
+<td>秒読み</td>
+<td>reading seconds</td>
+<td>读秒</td>
+</tr>
+<tr>
+<td>carpenter’s square</td>
+<td>小曲尺</td>
+<td>-</td>
+<td>小曲尺</td>
+</tr>
+<tr>
+<td>chuban</td>
+<td>中盤</td>
+<td>middle game</td>
+<td>中盘</td>
+</tr>
+<tr>
+<td>dame</td>
+<td>駄目</td>
+<td>neutral point, dame</td>
+<td>单官，气</td>
+</tr>
+<tr>
+<td>dan</td>
+<td>段</td>
+<td>grade</td>
+<td>段</td>
+</tr>
+<tr>
+<td>empty triangle</td>
+<td>空三角</td>
+<td>-</td>
+<td>空三角</td>
+</tr>
+<tr>
+<td>eye</td>
+<td>眼</td>
+<td>-</td>
+<td>眼</td>
+</tr>
+<tr>
+<td>furikawari</td>
+<td>振り替わり</td>
+<td>exchange, trade, swap</td>
+<td>转换、交换</td>
+</tr>
+<tr>
+<td>fuseki</td>
+<td>布石</td>
+<td>opening</td>
+<td>布局</td>
+</tr>
+<tr>
+<td>geta</td>
+<td>下駄</td>
+<td>clog (trap)</td>
+<td>枷</td>
+</tr>
+<tr>
+<td>gaisei</td>
+<td>外勢</td>
+<td>outside influence</td>
+<td>外势</td>
+</tr>
+<tr>
+<td>gankei</td>
+<td>眼形</td>
+<td>eye shape</td>
+<td>眼形</td>
+</tr>
+<tr>
+<td>go</td>
+<td>碁</td>
+<td>go (game)</td>
+<td>围棋</td>
+</tr>
+<tr>
+<td>goban</td>
+<td>碁盤</td>
+<td>go board</td>
+<td>围棋盘</td>
+</tr>
+<tr>
+<td>godokoro</td>
+<td>碁所</td>
+<td>go place</td>
+<td>碁所(棋所)</td>
+</tr>
+<tr>
+<td>Gosei</td>
+<td>碁聖</td>
+<td>Go saint</td>
+<td>碁圣(小棋圣)</td>
+</tr>
+<tr>
+<td>gote</td>
+<td>後手</td>
+<td>after hand</td>
+<td>后手</td>
+</tr>
+<tr>
+<td>gote no sente</td>
+<td>後手の先手</td>
+<td>sente in gote</td>
+<td>后中先</td>
+</tr>
+<tr>
+<td>gukei</td>
+<td>愚形</td>
+<td>bad shape</td>
+<td>愚形</td>
+</tr>
+<tr>
+<td>gyaku sente</td>
+<td>逆先手</td>
+<td>reverse sente</td>
+<td>逆先手</td>
+</tr>
+<tr>
+<td>gyaku yose</td>
+<td>逆官子</td>
+<td>reverse yose</td>
+<td>逆官子</td>
+</tr>
+<tr>
+<td>hamete</td>
+<td>羽目手</td>
+<td>trick move</td>
+<td>嵌手</td>
+</tr>
+<tr>
+<td>hanami-ko</td>
+<td>花見劫</td>
+<td>hanami ko</td>
+<td>看花劫</td>
+</tr>
+<tr>
+<td>hana-zuke</td>
+<td>鼻付け</td>
+<td>nose attachment</td>
+<td>鼻顶</td>
+</tr>
+<tr>
+<td>hane</td>
+<td>扳</td>
+<td>hane</td>
+<td>扳</td>
+</tr>
+<tr>
+<td>hane-kaeshi</td>
+<td>反扳</td>
+<td>counter hane</td>
+<td>反扳，连扳</td>
+</tr>
+<tr>
+<td>hangan</td>
+<td>半眼</td>
+<td>half an eye</td>
+<td>半眼</td>
+</tr>
+<tr>
+<td>han-ko</td>
+<td>半劫</td>
+<td>half ko</td>
+<td>半劫</td>
+</tr>
+<tr>
+<td>han-moku</td>
+<td>半目</td>
+<td>half a point</td>
+<td>半目</td>
+</tr>
+<tr>
+<td>hasami</td>
+<td>挟み</td>
+<td>pincer attack</td>
+<td>夹攻</td>
+</tr>
+<tr>
+<td>hasami-kaeshi</td>
+<td>挟み返し</td>
+<td>counter pincer</td>
+<td>反夹</td>
+</tr>
+<tr>
+<td>haya-go</td>
+<td>早碁</td>
+<td>fast go</td>
+<td>快棋</td>
+</tr>
+<tr>
+<td>hazama</td>
+<td>狭間</td>
+<td>gap</td>
+<td>穿象眼</td>
+</tr>
+<tr>
+<td>hazama tobi</td>
+<td>狭間飛び</td>
+<td>hazama jump</td>
+<td>象飞</td>
+</tr>
+<tr>
+<td>hiraki</td>
+<td>開き</td>
+<td>extension</td>
+<td>开拆</td>
+</tr>
+<tr>
+<td>hon-ko</td>
+<td>本劫</td>
+<td>real ko</td>
+<td>本劫</td>
+</tr>
+<tr>
+<td>Honte</td>
+<td>本手</td>
+<td>proper move</td>
+<td>本手</td>
+</tr>
+<tr>
+<td>hoshi</td>
+<td>星</td>
+<td>star point</td>
+<td>星</td>
+</tr>
+<tr>
+<td>igo</td>
+<td>囲碁</td>
+<td>go</td>
+<td>围棋</td>
+</tr>
+<tr>
+<td>ikken</td>
+<td>一間</td>
+<td>one space</td>
+<td>一间</td>
+</tr>
+<tr>
+<td>ikken-basami</td>
+<td>一間挟み</td>
+<td>one-space pincer</td>
+<td>一间夹</td>
+</tr>
+<tr>
+<td>ikken-biraki</td>
+<td>一間開き</td>
+<td>one-space extension</td>
+<td>一间拆</td>
+</tr>
+<tr>
+<td>ikken-jimari</td>
+<td>一間地鎮り</td>
+<td>one-space enclosure</td>
+<td>单关守角</td>
+</tr>
+<tr>
+<td>ikken-tobi</td>
+<td>一間飛び</td>
+<td>one-space jump</td>
+<td>一间跳</td>
+</tr>
+<tr>
+<td>insei</td>
+<td>院生</td>
+<td>insei (go student)</td>
+<td>院生</td>
+</tr>
+<tr>
+<td>ishi-no-shita</td>
+<td>石の下</td>
+<td>under the stones</td>
+<td>倒脱靴</td>
+</tr>
+<tr>
+<td>ji</td>
+<td>地</td>
+<td>territory</td>
+<td>地</td>
+</tr>
+<tr>
+<td>jigo</td>
+<td>持碁</td>
+<td>drawn game</td>
+<td>和棋，持棋</td>
+</tr>
+<tr>
+<td>joseki</td>
+<td>定石</td>
+<td>joseki</td>
+<td>定式</td>
+</tr>
+<tr>
+<td>joban</td>
+<td>序盤</td>
+<td>opening game</td>
+<td>序盤</td>
+</tr>
+<tr>
+<td>josen</td>
+<td>定先</td>
+<td>fixed black</td>
+<td>定先</td>
+</tr>
+<tr>
+<td>jozu</td>
+<td>上手</td>
+<td>skilled player</td>
+<td>上手，又常指江户时期的七段</td>
+</tr>
+<tr>
+<td>jubango</td>
+<td>十番碁</td>
+<td>ten-game match</td>
+<td>十番棋</td>
+</tr>
+<tr>
+<td>Judan</td>
+<td>十段</td>
+<td>Tenth Dan</td>
+<td>十段战</td>
+</tr>
+<tr>
+<td>jun-Meijin</td>
+<td>准名人</td>
+<td>almost Meijin</td>
+<td>准名人</td>
+</tr>
+<tr>
+<td>kabe</td>
+<td>壁</td>
+<td>wall</td>
+<td>壁</td>
+</tr>
+<tr>
+<td>kakari</td>
+<td>掛かり</td>
+<td>approach move</td>
+<td>挂角</td>
+</tr>
+<tr>
+<td>kake</td>
+<td>掛け</td>
+<td>hanging</td>
+<td>飞压</td>
+</tr>
+<tr>
+<td>kake-me</td>
+<td>掛目</td>
+<td>false eye</td>
+<td>假眼</td>
+</tr>
+<tr>
+<td>keshi</td>
+<td>消し</td>
+<td>erasure</td>
+<td>消，侵消</td>
+</tr>
+<tr>
+<td>ki</td>
+<td>棋</td>
+<td>game (general)</td>
+<td>棋</td>
+</tr>
+<tr>
+<td>kiai</td>
+<td>気合</td>
+<td>fighting spirit</td>
+<td>气合</td>
+</tr>
+<tr>
+<td>kishi</td>
+<td>棋士</td>
+<td>go player</td>
+<td>棋士</td>
+</tr>
+<tr>
+<td>ki-in</td>
+<td>棋院</td>
+<td>Go institute</td>
+<td>棋院</td>
+</tr>
+<tr>
+<td>kido</td>
+<td>棋道</td>
+<td>way of Go</td>
+<td>棋道</td>
+</tr>
+<tr>
+<td>kifu</td>
+<td>棋譜</td>
+<td>Go record</td>
+<td>棋谱</td>
+</tr>
+<tr>
+<td>kikashi</td>
+<td>利かし</td>
+<td>forcing move</td>
+<td>先手利</td>
+</tr>
+<tr>
+<td>kiri</td>
+<td>切り</td>
+<td>cut</td>
+<td>切断</td>
+</tr>
+<tr>
+<td>kiri-chigai</td>
+<td>切り違い</td>
+<td>crosscut</td>
+<td>扭断</td>
+</tr>
+<tr>
+<td>Kisei</td>
+<td>棋聖</td>
+<td>Go saint</td>
+<td>棋圣</td>
+</tr>
+<tr>
+<td>ko</td>
+<td>劫</td>
+<td>ko</td>
+<td>劫</td>
+</tr>
+<tr>
+<td>kogeima</td>
+<td>小桂馬</td>
+<td>small knight</td>
+<td>小飞，小桂马</td>
+</tr>
+<tr>
+<td>komi</td>
+<td>コミ</td>
+<td>komi</td>
+<td>贴目</td>
+</tr>
+<tr>
+<td>komoku</td>
+<td>小目</td>
+<td>3-4 point</td>
+<td>小目</td>
+</tr>
+<tr>
+<td>kosumi</td>
+<td>コスミ</td>
+<td>diagonal move</td>
+<td>小尖</td>
+</tr>
+<tr>
+<td>kosumi-tsuke</td>
+<td>コスミ付け</td>
+<td>diagonal attachment</td>
+<td>尖顶</td>
+</tr>
+<tr>
+<td>kozai</td>
+<td>劫材</td>
+<td>ko threat</td>
+<td>劫材</td>
+</tr>
+<tr>
+<td>kyu</td>
+<td>級</td>
+<td>class, grade</td>
+<td>级</td>
+</tr>
+<tr>
+<td>kyusho</td>
+<td>急所</td>
+<td>vital point</td>
+<td>急所</td>
+</tr>
+<tr>
+<td>liberty</td>
+<td>気</td>
+<td>liberty</td>
+<td>气</td>
+</tr>
+<tr>
+<td>magari</td>
+<td>曲がり</td>
+<td>turn</td>
+<td>曲</td>
+</tr>
+<tr>
+<td>magari-tsuke</td>
+<td>曲がり付け</td>
+<td>turning attachment</td>
+<td>拐头</td>
+</tr>
+<tr>
+<td>mane-go</td>
+<td>模倣碁</td>
+<td>mimic go</td>
+<td>模仿棋</td>
+</tr>
+<tr>
+<td>mannen-ko</td>
+<td>万年劫</td>
+<td>eternal ko</td>
+<td>万年劫</td>
+</tr>
+<tr>
+<td>me</td>
+<td>目</td>
+<td>eye</td>
+<td>眼</td>
+</tr>
+<tr>
+<td>me-gatachi</td>
+<td>目形</td>
+<td>eye shape</td>
+<td>眼形</td>
+</tr>
+<tr>
+<td>mekura-go</td>
+<td>盲碁</td>
+<td>blindfold go</td>
+<td>盲棋</td>
+</tr>
+<tr>
+<td>Meijin</td>
+<td>名人</td>
+<td>Meijin</td>
+<td>名人</td>
+</tr>
+<tr>
+<td>menjo</td>
+<td>免状</td>
+<td>diploma</td>
+<td>免状，棋力证书</td>
+</tr>
+<tr>
+<td>miai</td>
+<td>見合い</td>
+<td>interchangeable</td>
+<td>见合</td>
+</tr>
+<tr>
+<td>mokuhazushi</td>
+<td>目外</td>
+<td>5-3 point</td>
+<td>目外</td>
+</tr>
+<tr>
+<td>moyo</td>
+<td>模様</td>
+<td>pattern</td>
+<td>模样</td>
+</tr>
+<tr>
+<td>myoshu</td>
+<td>妙手</td>
+<td>brilliant move</td>
+<td>妙手</td>
+</tr>
+<tr>
+<td>nadare</td>
+<td>雪崩</td>
+<td>avalanche joseki</td>
+<td>雪崩</td>
+</tr>
+<tr>
+<td>nidan-bane</td>
+<td>二段扳</td>
+<td>two-step hane</td>
+<td>连扳</td>
+</tr>
+<tr>
+<td>nigiri</td>
+<td>握り</td>
+<td>deciding who plays black</td>
+<td>猜先</td>
+</tr>
+<tr>
+<td>Nihon Ki-in</td>
+<td>日本棋院</td>
+<td>Japan Go Association</td>
+<td>日本棋院</td>
+</tr>
+<tr>
+<td>niken</td>
+<td>二間</td>
+<td>two spaces</td>
+<td>二间</td>
+</tr>
+<tr>
+<td>niken-basami</td>
+<td>二間挟み</td>
+<td>two-space pincer</td>
+<td>二间夹</td>
+</tr>
+<tr>
+<td>niken-biraki</td>
+<td>二間開き</td>
+<td>two-space extension</td>
+<td>二间拆</td>
+</tr>
+<tr>
+<td>niken-jimari</td>
+<td>二間地鎮り</td>
+<td>two-space corner enclosure</td>
+<td>二间守角</td>
+</tr>
+<tr>
+<td>niken-taka-basami</td>
+<td>二間高挟み</td>
+<td>high two-space pincer</td>
+<td>二间高夹</td>
+</tr>
+<tr>
+<td>niken-taka-gakari</td>
+<td>二間高掛かり</td>
+<td>two-space high approach</td>
+<td>二间高挂</td>
+</tr>
+<tr>
+<td>niken-tobi</td>
+<td>二間飛び</td>
+<td>two-space jump</td>
+<td>二间跳</td>
+</tr>
+<tr>
+<td>niren-sei</td>
+<td>二連星</td>
+<td>two star points</td>
+<td>二连星</td>
+</tr>
+<tr>
+<td>nobi</td>
+<td>伸び</td>
+<td>stretch</td>
+<td>长</td>
+</tr>
+<tr>
+<td>nozoki</td>
+<td>覗き</td>
+<td>peep</td>
+<td>刺</td>
+</tr>
+<tr>
+<td>nurui</td>
+<td>温い</td>
+<td>lukewarm, slack</td>
+<td>缓</td>
+</tr>
+<tr>
+<td>oba</td>
+<td>大場</td>
+<td>large point</td>
+<td>大场</td>
+</tr>
+<tr>
+<td>ogeima</td>
+<td>大桂馬</td>
+<td>large knight's move</td>
+<td>大飞挂</td>
+</tr>
+<tr>
+<td>ogeima-jimari</td>
+<td>大桂馬地鎮り</td>
+<td>large knight's corner enclosure</td>
+<td>大飞守角</td>
+</tr>
+<tr>
+<td>oki-go</td>
+<td>置碁</td>
+<td>handicap go</td>
+<td>让子棋</td>
+</tr>
+<tr>
+<td>omoi</td>
+<td>重い</td>
+<td>heavy</td>
+<td>重</td>
+</tr>
+<tr>
+<td>onadare</td>
+<td>大雪崩</td>
+<td>large avalanche joseki</td>
+<td>大雪崩</td>
+</tr>
+<tr>
+<td>osae</td>
+<td>押さえ</td>
+<td>block</td>
+<td>挡</td>
+</tr>
+<tr>
+<td>oshi</td>
+<td>押し</td>
+<td>push</td>
+<td>压</td>
+</tr>
+<tr>
+<td>o-shiro go</td>
+<td>御城碁</td>
+<td>castle go</td>
+<td>御城棋</td>
+</tr>
+<tr>
+<td>Paduk</td>
+<td>바둑</td>
+<td>Go (Korean)</td>
+<td>围棋</td>
+</tr>
+<tr>
+<td>poka</td>
+<td>ポカ</td>
+<td>blunder</td>
+<td>恶手，错着</td>
+</tr>
+<tr>
+<td>ponnuki</td>
+<td>ポン抜き</td>
+<td>capturing and creating shape</td>
+<td>开花</td>
+</tr>
+<tr>
+<td>Ranka</td>
+<td>烂柯</td>
+<td>ancient name for Go</td>
+<td>烂柯</td>
+</tr>
+<tr>
+<td>rengo</td>
+<td>連碁</td>
+<td>pair Go</td>
+<td>连棋</td>
+</tr>
+<tr>
+<td>ryo-atari</td>
+<td>両アタリ</td>
+<td>double atari</td>
+<td>双打</td>
+</tr>
+<tr>
+<td>ryo-ko</td>
+<td>両劫</td>
+<td>double ko</td>
+<td>双劫</td>
+</tr>
+<tr>
+<td>ryo-gote</td>
+<td>両後手</td>
+<td>both in gote</td>
+<td>双方后手</td>
+</tr>
+<tr>
+<td>ryo-sente</td>
+<td>両先手</td>
+<td>both in sente</td>
+<td>双方先手</td>
+</tr>
+<tr>
+<td>sabaki</td>
+<td>捌き</td>
+<td>handling of stones</td>
+<td>腾挪</td>
+</tr>
+<tr>
+<td>sagari</td>
+<td>下がり</td>
+<td>descent</td>
+<td>立</td>
+</tr>
+<tr>
+<td>sandan-bane</td>
+<td>三段扳</td>
+<td>triple hane</td>
+<td>三连扳</td>
+</tr>
+<tr>
+<td>san-ko</td>
+<td>三劫</td>
+<td>triple ko</td>
+<td>三劫</td>
+</tr>
+<tr>
+<td>sangen</td>
+<td>三間</td>
+<td>three spaces</td>
+<td>三间</td>
+</tr>
+<tr>
+<td>sanren-sei</td>
+<td>三連星</td>
+<td>three star points</td>
+<td>三连星</td>
+</tr>
+<tr>
+<td>saru-suberi</td>
+<td>猿滑り</td>
+<td>monkey jump</td>
+<td>大飞伸腿</td>
+</tr>
+<tr>
+<td>seki</td>
+<td>セキ</td>
+<td>mutual life</td>
+<td>双活</td>
+</tr>
+<tr>
+<td>sekito shibori</td>
+<td>石塔絞り</td>
+<td>stone tower squeeze</td>
+<td>大头鬼</td>
+</tr>
+<tr>
+<td>seme</td>
+<td>攻め</td>
+<td>attack</td>
+<td>攻击</td>
+</tr>
+<tr>
+<td>semeai</td>
+<td>攻め合い</td>
+<td>capturing race</td>
+<td>对杀</td>
+</tr>
+<tr>
+<td>sente</td>
+<td>先手</td>
+<td>the initiative</td>
+<td>先手</td>
+</tr>
+<tr>
+<td>shibori</td>
+<td>絞り</td>
+<td>squeeze</td>
+<td>滚打包收</td>
+</tr>
+<tr>
+<td>shicho</td>
+<td>シチョウ</td>
+<td>ladder</td>
+<td>征</td>
+</tr>
+<tr>
+<td>shicho-atari</td>
+<td>シチョウアタリ</td>
+<td>ladder breaker</td>
+<td>引征</td>
+</tr>
+<tr>
+<td>shido-go</td>
+<td>指導碁</td>
+<td>teaching game</td>
+<td>指导棋</td>
+</tr>
+<tr>
+<td>shitatsu</td>
+<td>死活</td>
+<td>life and death</td>
+<td>死活</td>
+</tr>
+<tr>
+<td>shimari</td>
+<td>締まり</td>
+<td>corner enclosure</td>
+<td>守角</td>
+</tr>
+<tr>
+<td>shimbun go</td>
+<td>新聞碁</td>
+<td>newspaper Go</td>
+<td>新闻棋战</td>
+</tr>
+<tr>
+<td>Shin Fuseki</td>
+<td>新布石</td>
+<td>New Fuseki</td>
+<td>新布局</td>
+</tr>
+<tr>
+<td>shini-ishi</td>
+<td>死に石</td>
+<td>dead stones</td>
+<td>死棋</td>
+</tr>
+<tr>
+<td>shinogi</td>
+<td>凌ぎ</td>
+<td>saving stones</td>
+<td>治孤</td>
+</tr>
+<tr>
+<td>shitate</td>
+<td>下手</td>
+<td>lower-ranked player</td>
+<td>下手</td>
+</tr>
+<tr>
+<td>shodan</td>
+<td>初段</td>
+<td>1-dan</td>
+<td>初段</td>
+</tr>
+<tr>
+<td>shuban</td>
+<td>終盤</td>
+<td>endgame</td>
+<td>终盘</td>
+</tr>
+<tr>
+<td>shudan</td>
+<td>手談</td>
+<td>Go</td>
+<td>手谈</td>
+</tr>
+<tr>
+<td>Shusaku-ryu</td>
+<td>秀策流</td>
+<td>Shusaku opening</td>
+<td>秀策流</td>
+</tr>
+<tr>
+<td>sogo</td>
+<td>争碁</td>
+<td>fighting Go</td>
+<td>争棋</td>
+</tr>
+<tr>
+<td>son</td>
+<td>損</td>
+<td>loss</td>
+<td>损</td>
+</tr>
+<tr>
+<td>son-ko</td>
+<td>損劫</td>
+<td>loss-making ko</td>
+<td>损劫</td>
+</tr>
+<tr>
+<td>soto dame</td>
+<td>外ダメ</td>
+<td>outer liberty</td>
+<td>外气</td>
+</tr>
+<tr>
+<td>sugata</td>
+<td>姿</td>
+<td>shape</td>
+<td>形</td>
+</tr>
+<tr>
+<td>suji</td>
+<td>筋</td>
+<td>line of play</td>
+<td>筋</td>
+</tr>
+<tr>
+<td>sumi</td>
+<td>角</td>
+<td>corner</td>
+<td>角</td>
+</tr>
+<tr>
+<td>suteru</td>
+<td>捨てる</td>
+<td>to discard</td>
+<td>弃子</td>
+</tr>
+<tr>
+<td>sute-ishi</td>
+<td>捨て石</td>
+<td>sacrifice stone</td>
+<td>弃子</td>
+</tr>
+<tr>
+<td>tagai-sen</td>
+<td>互先</td>
+<td>alternating blacks</td>
+<td>互先</td>
+</tr>
+<tr>
+<td>taisha</td>
+<td>大斜</td>
+<td>large slant</td>
+<td>大斜</td>
+</tr>
+<tr>
+<td>takamoku</td>
+<td>高目</td>
+<td>high point</td>
+<td>高目</td>
+</tr>
+<tr>
+<td>takefu</td>
+<td>竹節</td>
+<td>bamboo joint</td>
+<td>竹节</td>
+</tr>
+<tr>
+<td>te</td>
+<td>手</td>
+<td>move</td>
+<td>手</td>
+</tr>
+<tr>
+<td>tejun</td>
+<td>手順</td>
+<td>order of moves</td>
+<td>次序</td>
+</tr>
+<tr>
+<td>tenuki</td>
+<td>手抜き</td>
+<td>tenuki, to play elsewhere</td>
+<td>脱先</td>
+</tr>
+<tr>
+<td>tesuji</td>
+<td>手筋</td>
+<td>clever move</td>
+<td>手筋</td>
+</tr>
+<tr>
+<td>tetchu</td>
+<td>鉄柱</td>
+<td>iron pillar</td>
+<td>铁柱守角</td>
+</tr>
+<tr>
+<td>tewari</td>
+<td>手割り</td>
+<td>analysis method</td>
+<td>手割</td>
+</tr>
+<tr>
+<td>tengen</td>
+<td>天元</td>
+<td>center point</td>
+<td>天元</td>
+</tr>
+<tr>
+<td>tobi</td>
+<td>飛び</td>
+<td>jump</td>
+<td>跳</td>
+</tr>
+<tr>
+<td>tsugi</td>
+<td>継ぎ</td>
+<td>connection</td>
+<td>连</td>
+</tr>
+<tr>
+<td>tsuke</td>
+<td>付け</td>
+<td>attachment</td>
+<td>靠</td>
+</tr>
+<tr>
+<td>tsuki-dashi</td>
+<td>突き出し</td>
+<td>push through</td>
+<td>冲</td>
+</tr>
+<tr>
+<td>tsume</td>
+<td>詰め</td>
+<td>check</td>
+<td>逼</td>
+</tr>
+<tr>
+<td>tsume-go</td>
+<td>詰碁</td>
+<td>life and death problem</td>
+<td>诘棋</td>
+</tr>
+<tr>
+<td>uchikake</td>
+<td>打ち掛け</td>
+<td>adjourning a game</td>
+<td>打挂</td>
+</tr>
+<tr>
+<td>uchikomi</td>
+<td>打ち込み</td>
+<td>invasion</td>
+<td>打入</td>
+</tr>
+<tr>
+<td>uchisugi</td>
+<td>打ち過ぎ</td>
+<td>overplay</td>
+<td>过分</td>
+</tr>
+<tr>
+<td>uki-ishi</td>
+<td>浮き石</td>
+<td>floating stone</td>
+<td>浮棋</td>
+</tr>
+<tr>
+<td>usui</td>
+<td>薄い</td>
+<td>thin</td>
+<td>薄</td>
+</tr>
+<tr>
+<td>usui katachi</td>
+<td>薄い形</td>
+<td>thin shape</td>
+<td>薄形</td>
+</tr>
+<tr>
+<td>utte-gaeshi</td>
+<td>打って返し</td>
+<td>snapback</td>
+<td>倒扑</td>
+</tr>
+<tr>
+<td>warikomi</td>
+<td>割り込み</td>
+<td>wedge</td>
+<td>挖</td>
+</tr>
+<tr>
+<td>wariuchi</td>
+<td>割り打ち</td>
+<td>splitting invasion</td>
+<td>割打</td>
+</tr>
+<tr>
+<td>watari</td>
+<td>渡り</td>
+<td>connection across</td>
+<td>渡</td>
+</tr>
+<tr>
+<td>yomi</td>
+<td>読み</td>
+<td>reading</td>
+<td>读棋</td>
+</tr>
+<tr>
+<td>yose</td>
+<td>寄せ</td>
+<td>endgame</td>
+<td>收官</td>
+</tr>
+<tr>
+<td>yurumi shicho</td>
+<td>緩みシチョウ</td>
+<td>loose ladder</td>
+<td>宽气征</td>
+</tr>
+<tr>
+<td>zoku suji</td>
+<td>俗筋</td>
+<td>bad shape</td>
+<td>俗筋</td>
+</tr>
+</tbody>
+</table>
+    </div>
+    <script src="assets/script_go.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

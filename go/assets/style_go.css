@@ -1,0 +1,134 @@
+#searchBox {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 300px;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 1.5em !important;
+}
+
+#main {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  width: 80%;
+  margin-top: 0.7em;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-table-border);
+  cursor: pointer;
+}
+th {
+  background-color: var(--color-th-background);
+  min-width: 5em;
+}
+
+/* :root {
+    --rad: .5rem;
+    --dur: .3s;
+    --color-dark: #2f2f2f;
+    --color-light: #fff;
+    --color-brand: #57bd84;
+    --font-fam: 'Lato', sans-serif;
+    --height: 5rem;
+    --btn-width: 6rem;
+    --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  } */
+
+input[type="text"] {
+  outline: 0;
+  width: 100%;
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  background: var(--color-input-background);
+  color: var(--color-text); /* 确保输入框文本颜色也随主题变化 */
+}
+
+:root {
+  /* Light Mode Colors */
+  --color-background: #fff;
+  --color-text: #212529;
+  --color-table-border: #ddd;
+  --color-th-background: #f2f2f2;
+  --color-input-background: #fff;
+  --color-button-background: #aaa; /* 调整按钮背景色 */
+  --color-button-text: #fff; /* 调整按钮文本色 */
+
+  /* Dark Mode Colors */
+  --dark-color-background: #343a40;
+  --dark-color-text: #f8f9fa;
+  --dark-color-table-border: #454d55;
+  --dark-color-th-background: #495057;
+  --dark-color-input-background: #495057;
+  --dark-color-button-background: #6c757d; /* 暗模式按钮背景色 */
+  --dark-color-button-text: #e2e6ea; /* 暗模式按钮文本色 */
+}
+
+[data-theme="dark"] {
+  --color-background: var(--dark-color-background);
+  --color-text: var(--dark-color-text);
+  --color-table-border: var(--dark-color-table-border);
+  --color-th-background: var(--dark-color-th-background);
+  --color-input-background: var(--dark-color-input-background);
+  --color-button-background: var(--dark-color-button-background);
+  --color-button-text: var(--dark-color-button-text);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.7em;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  background-color: var(--color-background);
+  color: var(--color-text) !important;
+}
+
+/* Float bar*/
+.floating-bar {
+  position: fixed;
+  bottom: 25px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.floating-bar button {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+  background-color: var(--color-button-background);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px; /* 调整图标大小 */
+}
