@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <section id="page">
+  <head>
+    <title>怎么下载 Youtube 视频</title>
+    <link rel="stylesheet" href="../assets/sn4s_styles.css">
+    <link rel="stylesheet" href="../assets/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/highlight/styles/base16/solarized-light.min.css">
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <layout-header>
+      <div id="progress-bar"></div>
+    </layout-header>
+    <!-- main -->
+    <layout-main>
+        <div id="post">
+          <div id="post-title">
+            <h1> 怎么下载 Youtube 视频 </h1>
+          </div>
+          <div id="post-date">
+            <p> 2025-03-29 </p>
+          </div>
+            <!-- Unfinished stack bar feature, commented temporaliy -->
+            <!-- <div id="stack-bar">
+              
+              <div class="stack" id="title1">“问题都被解决过了”</div>
+              
+              <div class="stack" id="title2">说简单也没那么简单</div>
+              
+              <div class="stack" id="title3">怎么安装这种软件呢</div>
+              
+              <div class="stack" id="title4">包管理</div>
+              
+              <div class="stack" id="title5">Homebrew</div>
+              
+              <div class="stack" id="title6">回主线任务</div>
+              
+              <div class="stack" id="title7">除了 Youtube</div>
+              
+            </div> -->
+          <div id="post-body">
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title1">“问题都被解决过了”</h2>
+              
+              <p>TLDR: 在命令行终端(Terminal)里一行指令搞定:</p>
+              
+              <p><pre><code>yt-dlp https://www.youtube.com/watch\?v\=gJ6-1ieNUGk</code></pre></p>
+              
+              <p>稍微解释一下，这里 <code>yt-dlp</code> 是一条命令，后面显然是你需要下载的 Youtube 视频地址。如果你在非特殊网络环境下，这样就应该已经开始下载了。不过别急着就去命令行敲这句指令，因为大概率不会成功。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title2">说简单也没那么简单</h2>
+              
+              <p>上面这条命令可以在你的设备上(我们这里默认 MacOS 笔记本/台式机)可以使用的前提是，你的设备上已经安装了这个软件 —— 是的，相对于大多数人更熟悉的、带有界面、可以用鼠标点点选选就能使用的软件而言，这种只能在命令行环境下、通过敲入字符来运行的，也是软件，也需要安装。</p>
+              
+              <p>题外话：</p>
+              
+              <p><ul></p>
+              
+              <p><li>这种软件的历史更悠久，不少人以这种软件为正统</p>
+              
+              <p></li></p>
+              
+              <p><li>几乎所有的以收费或者展示广告为目的的，在线版本的 Youtube 视频下载网站，后台其实都是跑了这个(和一个类似的)软件</p>
+              
+              <p></ul></p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title3">怎么安装这种软件呢</h2>
+              
+              <p>这里有一些坏消息和一个好消息。坏消息是，因为这些软件大多数都是开发者以分享形式发布的，而非出于赚钱的目的，所以大多数时候这些软件都因为开发环境、使用编程语言等背景，有各自不同的安装要求。而且它分享默认的受众是对软件开发有一定了解的群体，因为我分享的不仅是软件这个结果，更重要的是分享并收集解决这个问题的方法和思路。</p>
+              
+              <p>好消息是，这个问题也“被解决过了”。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title4">包管理</h2>
+              
+              <p>如果把上面问题泛化，基本上得到这样一个困境：有很多乐于分享的软件开发者，开发了很多解决具体问题的软件，比如如何下载 Youtube 视频。现在这些软件分散在各处，有的更新的勤快、有的慢一些，每个软件的依赖(依赖就是，运行这个软件需要用到的其它软件)不同，每个软件的安装动作各异。</p>
+              
+              <p>现在有一帮人负责在一处汇总、并一一记载和管理这些信息。当大家在要安装某一个软件时，只需要去这个平台说一句，比如我要装 yt-dlp ，就可以自动的在自己的设备上执行“已经经过良好维护和测试的安装过程代码”。这个平台就是包管理的开源仓库，里面存放的主要是经过测试维护的软件安装过程代码。</p>
+              
+              <p>现在用户安装起来方便了，开发者也因此获得更多用户和反馈，于是开发者也开始积极参与这套规则，调整自己的开发策略，甚至主动的把自己软件的安装过程代码存放到包管理平台上。于是生态就形成了，这就是包管理。</p>
+              
+              <p>包管理一直存在，每个操作系统(Win/MacOS/Linux)都有各自对应的，而且有的不只一个。</p>
+              
+              <p>我们这里只讲一个。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title5">Homebrew</h2>
+              
+              <p>先确定一下你的设备上是否已经安装了 Homebrew。在命令行终端界面上敲入：</p>
+              
+              <p><pre><code>brew -v</code></pre></p>
+              
+              <p>如果它返回一个类似 <code>Homebrew 4.4.21</code> 这样的版本号信息，就说明已经有了。</p>
+              
+              <p><span class="has-note"><span class="note-text">Homebrew</span><sup>[1]</sup></span> 是目前 MacOS 上成熟的、用户比较多的包管理软件。如果你去它的官方网页(点这行头上的链接)，第一句话就是安装它的方法。在命令行终端输入：</p>
+              
+              <p><pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre></p>
+              
+              <p>不用管细节，你就理解为，包管理软件自己的安装过程代码，被存在了上面的地址。执行这个命令以后，你的设备就自动的执行了 Homebrew 的安装过程。不出意外的话，等待安装结束，你再运行上面的 <code>brew -v</code> 就能看到版本号信息，我们第一个重要的灶头就砌好了，离自己开火烧饭又近了一步。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title6">回主线任务</h2>
+              
+              <p>现在，你终于可以听懂类似，“用 Homebrew 装一个 yt-dlp ”这样的“黑话”了。(有时也会说 “用 brew 装一个 xx”，因为 Homebrew 是软件名，<code>brew</code> 是 Homebrew 执行时使用的命令名。)</p>
+              
+              <p>这句话基本就等同于，在命令行下面执行：</p>
+              
+              <p><pre><code>brew install yt-dlp</code></pre></p>
+              
+              <p>然后看一阵屏幕上的代码纷飞，不出意外的话，你就可以使用 yt-dlp 下载 Youtube 视频了。</p>
+              
+              <p>有的时候使用 <code>brew install 软件名称</code> 安装时，会出现大家口里说的软件名(理解为俗称)，和这个软件在 Homebrew 包平台上的名称不一样的情况。比较保险的方法是，去 Homebrew 搜一下。比如 yt-dlp 在 Homebrew 上的包管理页面是<span class="has-note"><span class="note-text">这个</span><sup>[2]</sup></span>。上面有很多信息，比如软件代码放在哪里，过去 30 天有多少人安装，当然对我们来说最重要的就是上面那句 <code>brew install</code> 安装命令。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title7">除了 Youtube</h2>
+              
+              <p>另一个好消息，虽然视频网站千千万，但是它们的技术架构都大同小异。像 yt-dlp (以及它的前辈 youtube-dl) 不仅仅是解决了 Youtube 这一个网站的视频下载问题，而是解决了这一类网站的问题。如果你去 <span class="has-note"><span class="note-text">yt-dlp 的支持网站列表</span><sup>[3]</sup></span>看一眼，估计能吓一跳。它目前支持了 1300 多个网站的视频下载。也就是说，下一次不管什么网站，你都可以拿 <code>yt-dlp 视频地址</code> 先试试。大概率就已经满足你的需要了。</p>
+              
+            </article>
+             
+             <!-- add '.footnotes' class if it's a footnotes para -->
+              <article class="para_block footnotes">
+            
+            <h2 class="subtitle" id="title8">Footnotes</h2>
+              
+              <p>[1] https://brew.sh/</p>
+              
+              <p>[2] https://formulae.brew.sh/formula/yt-dlp#default</p>
+              
+              <p>[3] https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md</p>
+              
+            </article>
+            
+          </div>
+        </div>
+    </layout-main>
+    <!-- moc -->
+    <layout-left>
+      <div class="moc">
+        
+        <div class="moc_level1">
+          <a href="#title1">
+            <span>“问题都被解决过了”</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title2">
+            <span>说简单也没那么简单</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title3">
+            <span>怎么安装这种软件呢</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title4">
+            <span>包管理</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title5">
+            <span>Homebrew</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title6">
+            <span>回主线任务</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title7">
+            <span>除了 Youtube</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title8">
+            <span>Footnotes</span>
+          </a>
+        </div>
+        
+        <div class="moc_icons">
+          <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <i class="fa fa-moon-o" aria-hidden="true"></i>
+        </div>
+      </div>
+    </layout-left>
+    <!-- side -->
+    <layout-side>
+        <div id="right-foot">
+        
+        <article id="footnote-[1]" class="side-note">[1] https://brew.sh/</article>
+        
+        <article id="footnote-[2]" class="side-note">[2] https://formulae.brew.sh/formula/yt-dlp#default</article>
+        
+        <article id="footnote-[3]" class="side-note">[3] https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md</article>
+        
+        </div>
+    </layout-side>
+    <!-- foot -->
+    <layout-footer>
+      <footer>
+        aLai 2022
+      </footer>
+    </layout-footer>
+    <script src="../assets/sn4s_scripts.js" defer></script>
+  </body>
+  </section>
+</html>

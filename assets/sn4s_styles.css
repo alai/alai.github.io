@@ -1,0 +1,358 @@
+/* Color Variables */
+:root {
+  /* Light mode (default) */
+  --color-background: #feffef;
+  --color-text-primary: #000000;
+  --color-text-secondary: #404040;
+  --color-text-muted: #999;
+  --color-text-note: #7f7f7f;
+  --color-accent: burlywood;
+  --color-highlight: #fa9b6b;
+  --color-code-bg: #fff8e8;
+  --color-progress-start: #e8fa84;
+  --color-progress-end: #f4e88f;
+}
+
+/* Explicitly set light mode class to override browser preferences */
+html.light-mode {
+  --color-background: #feffef;
+  --color-text-primary: #000000;
+  --color-text-secondary: #404040;
+  --color-text-muted: #999;
+  --color-text-note: #7f7f7f;
+  --color-accent: burlywood;
+  --color-highlight: #fa9b6b;
+  --color-code-bg: #fff8e8;
+  --color-progress-start: #e8fa84;
+  --color-progress-end: #f4e88f;
+}
+
+/* Dark mode class takes precedence over browser preference */
+html.dark-mode {
+  --color-background: #16202a !important;
+  --color-text-primary: #d6d5d7 !important;
+  --color-text-secondary: #d0d0d0 !important;
+  --color-text-muted: #a0a0a0 !important;
+  --color-text-note: #b0b0b0 !important;
+  --color-accent: #d8b274 !important;
+  --color-highlight: #d8b274 !important;
+  --color-code-bg: #2a2a2a !important;
+  --color-progress-start: #677a36 !important;
+  --color-progress-end: #7a7045 !important;
+}
+
+/* System preference dark mode - lower priority */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-mode) {
+    --color-background: #16202a;
+    --color-text-primary: #d6d5d7;
+    --color-text-secondary: #d0d0d0;
+    --color-text-muted: #a0a0a0;
+    --color-text-note: #b0b0b0;
+    --color-accent: #d8b274;
+    --color-highlight: #d8b274;
+    --color-code-bg: #2a2a2a;
+    --color-progress-start: #677a36;
+    --color-progress-end: #7a7045;
+  }
+}
+
+#post {
+  padding-right: 70px;
+  /* padding-left: 65px; */
+}
+
+#post-body {
+  padding-top: 30px;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+h1 {
+    font-size: 2.4em;
+    font-family: auto;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h2 {
+    font-size: 1.5em;
+    padding-top: 0;
+    color: var(--color-text-secondary);
+    -webkit-font-smoothing: antialiased;
+}
+
+#post-date {
+  font-family: cursive;
+  font-size: unset;
+  color: var(--color-accent);
+  margin-top: -35px;
+}
+
+#post-body p {
+    line-height: 1.4em;
+    font-family: "KaiTi SC";
+    font-size: 1.5em;
+    text-align: justify;
+    -webkit-font-smoothing: antialiased;
+    margin-top: -0.3em;
+    font-weight: 500;
+}
+
+#post-body ul{
+    list-style-type: circle;
+}
+
+#post-body ul > li {
+    padding-left: 0.4em;
+    line-height: 1.4em;
+    margin-bottom: -30px;
+    font-family: "KaiTi SC";
+    font-size: 1.5em;
+    text-align: justify;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+}
+
+.para_block {
+  padding-top: 0.6em;
+}
+
+.has-note:hover > sup { /*sup number*/
+  /* border-bottom: 2px solid #c0c0c0;  */
+  /* text-decoration: #ff0000 solid underline; */
+  /* background: #e5ffe9; */
+  background: var(--color-highlight);
+  transition: background linear 0.3s;
+  font-weight: 700;
+}
+
+.has-note:hover > .note-text { /*the text has notes*/
+  /* background: #e5ffe9;
+  transition: background linear 0.3s; */
+  /* text-decoration: #ff0000 solid underline;  */
+  text-decoration: var(--color-highlight) solid underline; 
+  text-underline-offset: 0.25em;
+}
+
+sup {
+    position: relative;
+    top: -0.3em;
+    font-size: 60%;
+    font-weight: 700;
+    margin-left: 4px;
+    /* font-family: system-ui; */
+}
+
+footer {
+  text-align: center;
+  padding-right: 200px;
+  padding-left: 150px;
+  font-size: 1.2em;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  font-family: monospace;
+  color: var(--color-text-muted);
+}
+
+p code {
+  font-family: monospace;
+  font-size: large;
+  -webkit-font-smoothing: antialiased;
+  white-space: nowrap;
+  border-radius: 0.3em;
+  padding: 5px 6px 7px;
+  background-color: var(--color-code-bg);
+}
+
+.moc {
+    position: fixed;
+    top: 240px; /* Adjust this value to position correctly from top */
+    left: 0;
+    width: calc(18% - 35px); /* Adjust width to account for padding-right */
+    height: 80vh;
+    direction: rtl;
+    text-align: left;
+    overflow-y: auto;
+    padding-right: 35px;
+    max-width: 172px; /* Adjusted from 207px to account for 35px padding */
+}
+
+.moc_icons {
+    text-align: start;
+    padding-top: 1em;
+    color: var(--color-text-muted);
+}
+
+/* Add visual feedback for the icons */
+.moc_icons i {
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.moc_icons i:hover {
+  transform: scale(1.2);
+  color: var(--color-accent);
+}
+
+/* Ensure the fixed MOC adjusts for wider screens */
+@media only screen and (min-width: 1152px) {
+  .moc {
+    left: calc((100% - 1152px) / 2); /* Centers within available space */
+  }
+}
+
+.moc_level1 {
+    padding-top: 5px;
+    text-align: right;
+    font-family: system-ui;
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+}
+
+.moc a {
+  color: var(--color-text-muted);
+  text-decoration: auto;
+}
+
+.side-note {
+  width: calc(100% - 15px); /* Take full width of the side column minus 15px for spacing */
+  font-family: monospace;
+  font-size: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4em;
+  color: var(--color-text-note);
+  text-align: justify;
+  position: relative; /* Keep it relative to the side column */
+  opacity: 0;
+  transition: opacity linear 0.3s;
+  margin-left: auto; /* Align within the side column */
+  margin-right: 15px; /* Add space from the right edge */
+  overflow-wrap: break-word; /* Prevent text from overflowing */
+}
+
+.side-note a {
+  all: unset;
+  text-decoration: underline;
+}
+
+#right-foot {
+  position: relative;
+  margin-left: -40px;
+}
+
+/* Adjust the grid layout for #page */
+#page {
+  display: grid;
+  max-width: 100%; /* Ensure the page doesn't overflow */
+  grid-template-areas: "head head head"
+                       "left main side"
+                       "foot foot foot";
+  grid-template-rows: 50px 1fr 30px;
+  grid-template-columns: 18% 66% 16%; /* Adjust column widths */
+}
+
+/* Ensure the layout adapts for screens wider than 1152px */
+@media only screen and (min-width: 1152px) {
+  #page {
+    max-width: 1152px; /* Set a fixed maximum width */
+    margin: 0 auto; /* Center the page horizontally */
+  }
+}
+
+/* Ensure the layout adapts for smaller screens */
+@media only screen and (max-width: 1152px) {
+  #page {
+    grid-template-columns: 18% 66% 16%; /* Maintain proportions */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+  }
+}
+
+#page > layout-header {
+  grid-area: head;
+}
+
+#page > layout-left {
+  grid-area: left;
+}
+
+#page > layout-main {
+  grid-area: main;
+}
+
+#page > layout-side {
+  grid-area: side;
+}
+
+#page > layout-footer {
+  grid-area: foot;
+}
+
+.footnotes {
+  font-size: small;
+  color: var(--color-text-muted);
+}
+
+/* Progress bar */
+#progress-bar {
+  --scrollAmount: 0%;
+  
+  background-image: linear-gradient(120deg, var(--color-progress-start) 0%, var(--color-progress-end) 100%);
+  width: var(--scrollAmount);
+
+  /*  background: linear-gradient(to right, #F24E1E var(--scrollAmount), transparent 0);
+  width: 100%; */
+  
+  height: 5px;
+  position: fixed;
+  top: 0;
+  margin-left: -8px;
+}
+
+@media only screen and (max-width: 450px) {
+  /* CSS for mobile devices */
+  #page {
+    display: grid;
+    width: 450px;
+    grid-template-areas: "head head head"
+                         "left main side"
+                         "foot foot foot";
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-columns: 100px 1fr 300px;
+  }
+  #post-title {
+    position:sticky;
+  }
+}
+
+.subtitle {
+  /* Add your styles for the subtitles here */
+  
+  /* The transition */
+  transition: color 2s;
+  color: var(--color-text-muted);
+}
+
+.stack .subtitle {
+  /* The final state of the subtitles in the stack */
+  color: var(--color-text-muted);
+}
+
+.dark-mode .fa-moon-o {
+  color: var(--color-accent);
+}
+
+.light-mode .fa-sun-o,
+html:not(.dark-mode) .fa-sun-o {
+  color: var(--color-accent);
+}
