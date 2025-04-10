@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <section id="page">
+  <head>
+    <title>如何将音频转录成文字</title>
+    <link rel="stylesheet" href="../assets/sn4s_styles.css">
+    <link rel="stylesheet" href="../assets/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/highlight/styles/base16/solarized-light.min.css">
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <layout-header>
+      <div id="progress-bar"></div>
+    </layout-header>
+    <!-- main -->
+    <layout-main>
+        <div id="post">
+          <div id="post-title">
+            <h1> 如何将音频转录成文字 </h1>
+          </div>
+          <div id="post-date">
+            <p> 2025-04-09 </p>
+          </div>
+            <!-- Unfinished stack bar feature, commented temporaliy -->
+            <!-- <div id="stack-bar">
+              
+              <div class="stack" id="title1">TLDR</div>
+              
+              <div class="stack" id="title2">安装 Whisper</div>
+              
+              <div class="stack" id="title3">包管理和包管理</div>
+              
+              <div class="stack" id="title4">Read the Docs</div>
+              
+              <div class="stack" id="title5">Git</div>
+              
+              <div class="stack" id="title6">Github</div>
+              
+              <div class="stack" id="title7">回到主线任务</div>
+              
+              <div class="stack" id="title8">整合 AI 的命令行工具</div>
+              
+              <div class="stack" id="title9">那视频怎么办</div>
+              
+            </div> -->
+          <div id="post-body">
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title1">TLDR</h2>
+              
+              <p><span class="has-note"><span class="note-text">Whisper</span><sup>[1]</sup></span>是目前免费方案中支持语种最多、识别效果最好的。安装好 Whisper 然后命令行中一句指令搞定：  </p>
+              
+              <p><pre><code>whisper japanese.wav --language Japanese</code></pre></p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title2">安装 Whisper</h2>
+              
+              <p>Whisper 是以<span class="has-note"><span class="note-text">Python 包</span><sup>[2]</sup></span>的形式发布的，所以要用 Python 的官方包管理工具 PIP 来安装。在命令行中执行：  </p>
+              
+              <p><pre><code>pip install -U openai-whisper</code></pre></p>
+              
+              <p>同时 Whisper 依赖另一个命令行软件 ffmpeg，可以用我们介绍过的包管理工具 Homebrew 来安装：  </p>
+              
+              <p><pre><code>brew install ffmpeg</code></pre></p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title3">包管理和包管理</h2>
+              
+              <p>估计这里你会有些疑惑，为什么有两个包管理，他们有什么不同？</p>
+              
+              <p>先说区别，PIP 是只针对 Python 包的包管理，通过 PIP 安装的 Python 包需要在<span class="has-note"><span class="note-text">Python 这张”桌子”上</span><sup>[3]</sup></span>运行；Homebrew 是系统级工具的包管理，通过 Homebrew 安装的软件工具可以在 MacOS 这间“房间”里运行，而 Python 这张桌子也是这间房间里的“物件”。如果说一个 Python 包觉得，我是个系统级工具，它也完全可以把自己打包成后者。</p>
+              
+              <p>另一个重要的背景是，包管理可以有很多。<span class="has-note"><span class="note-text">我们介绍过</span><sup>[4]</sup></span>，包管理只是一套软件代码的发布和管理维护规范，而谁都可以站在不同的侧重点上定义自己的规范。所以不管是系统级的包管理如 Homebrew，还是 Python 的包管理如 PIP，都有很多有各自侧重点和卖点的竞品。好在对我们这些不搞开发的用户来说，知道 PIP 和 Homebrew 就已经完全够用了。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title4">Read the Docs</h2>
+              
+              <p>那我们是怎么知道一个软件（以及它的依赖软件）是要用哪个包管理来安装呢？答案是个在软件工程领域很著名的梗叫——<span class="has-note"><span class="note-text">“read the docs”</span><sup>[5]</sup></span>，读文档。</p>
+              
+              <p>软件都有自己的说明文档，而且软件开发者几乎都以能写出清晰的说明文档为荣，甚至有很多开发者推崇<span class="has-note"><span class="note-text">“文档先行”的开发哲学</span><sup>[6]</sup></span>。曾经找软件文档也不是件轻松的事情，它们很分散，有的在软件官方网站上、有的在专门提供软件文档储存服务的网站上、有的干脆是个文本文件附在软件的代码里。好在后来 Github 的出现改变了这个的局面。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title5">Git</h2>
+              
+              <p>要了解 Github 需要先了解一下 Git。Git 是<span class="has-note"><span class="note-text">传奇软件工程师 Linus</span><sup>[7]</sup></span>设计的一套对软件代码版本进行管理的规则和软件。想象一下这样的问题场景：每次你在给自己的代码增加一些新功能时，都有可能弄坏它已经实现的功能。你当然会尝试一边添加新代码，一边修改旧代码，并时时需要确认当下的改动既实现了新的需求而且没有破坏之前的工作。</p>
+              
+              <p>在这种情况下，代码的版本管理就变的很重要。你需要明确的知道每一次修改具体发生的变化——一般我们把同一批为了实现或修复某个功能的修改看作一个代码版本；而且实际上你会经常需要恢复到某一次变化之前的状态。</p>
+              
+              <p>而 Git 就是帮助你在这个过程里，始终知道自己到达当前这个状态历经了哪些代码版本，需要回到某一个时点的话应该去除哪些修改。它是个技术上并不复杂，但是逻辑上非常繁杂的问题场景。Git 把这个问题从根子上解决了，并且一举订立了这个问题的行业标准。</p>
+              
+              <p>有意思的是，Git 不仅可以对代码进行版本管理，它适用于所有文本的版本管理——因为代码也不过是一种文本嘛。所以你完全可以用 Git 来比如说创编小说或者剧本。只是对于大多数非技术背景的作者来说学会使用这个软件的门槛有些高了。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title6">Github</h2>
+              
+              <p>Github 是 Git 这个软件的在线服务网站，他们之间的关系有点像你可以在本地用 Word 处理文档，也可以用在线版本的 Google Docs。有了在线版本，可以很方便地让多人参与开发和维护同一个项目的代码，开源运动的黄金时代随之而来。</p>
+              
+              <p>需要说明的是，Github 并不是唯一的在线 Git 服务。不过因为它对于个人用户和小团队免费，早期就吸引了大量优秀开源项目将它选作在线代码仓库。更多人加入就有更多反馈，更多改进就让平台有机会变得更好，更好的平台再吸引更多人加入。飞轮效应很快让 Github 成为世界上最大的开源代码仓库。它的存在一定程度上也促成并加速了后来帮助 AI 习得编程能力的进程。</p>
+              
+              <p>而这件事还值得再深挖一下:</p>
+              
+              <p>拿交通灯来举例，最早我们的交通灯是手动切换控制的。因为操作的人需要看清路上情况，所以 80 年代你还能看到那种<span class="has-note"><span class="note-text">架高起来像个鸟巢的交通岗亭</span><sup>[8]</sup></span>。后来交通灯进化成定时自动切换的，再后来又变成程序控制的。人类就这样为了提高生产力，在现实层上建立起了各种控制系统，又将与这些系统对话的权限开放给程序，然后人类再通过指挥程序来实现对这些系统更精准、更自动化、更智能的控制。</p>
+              
+              <p>发展到今天，人类创造了各种各样的编程语言，并且用这些代码实现了对我们生活中各式各样系统的精准控制。而这些代码里的信息的总和，就因此聚合成了一个可以实现从数字世界作用于现实世界的中间件。先不论这到底对我们来说是好消息还是坏消息，因为这些代码客观上是人类共同创造出来的一个通用的、可以对现实世界中的控制系统进行操控的“语群”，它们的重要性因此已经上升到了文明级别。</p>
+              
+              <p>所以 Github 作为目前最大的开源代码仓库，还在斯瓦尔巴特群岛专门建立了一个“<span class="has-note"><span class="note-text">北极代码库</span><sup>[9]</sup></span>”，用来存放这些代码。大有“即使人没了，也不能丢了这些代码”的意思。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title7">回到主线任务</h2>
+              
+              <p>说了一大圈，无非是想说 Github 很重要，它不是“某一个的网站”，而是“那个网站”。</p>
+              
+              <p>如果你去查看 Whisper 的 Github 主页，很容易就能找到下面这些官方给出的，最常用的命令行指令用法以及和他们的说明。通常情况这些就已经足够让你上手完成任务了。</p>
+              
+              <p><pre><code>whisper audio.flac audio.mp3 audio.wav --model turbo</code></pre></p>
+              
+              <p><pre><code>whisper japanese.wav --language Japanese</code></pre></p>
+              
+              <p><pre><code>whisper japanese.wav --language Japanese --task translate</code></pre></p>
+              
+              <p><pre><code>whisper --help</code></pre></p>
+              
+              <p>不过你还是有可能会遇上，需要的指令藏在文档某个角落的情况。而且看文档对于大多数非技术背景的用户来说，确实是件有些无聊的事情。过去这种情况，你可能需要花一番力气搜索，或者网上发帖。而如今，我们有了 AI。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title8">整合 AI 的命令行工具</h2>
+              
+              <p>你已经有过使用命令行工具的经验了。在 MacOS 里，系统自带的命令行工具是 Terminal 。实际上它也有很多竞品，在 AI 时代之前这些竞品无非在比拼长得好不好看，操作起来是否方便。可是，无论怎样，如果你输入的指令不对，这些命令行工具也无能为力。这时你又需要花一番力气搜索，或者需要花 1 个小时读读软件文档，或者网上发帖求助。</p>
+              
+              <p>AI 出现以后，基本完全解决了这个问题。现在你只需要把命令行里执行的指令和报错信息丢给 AI，它就能解释你的指令错在哪里，以及如何修改。但是在命令行工具和 AI 工具之间来回复制粘贴还是挺麻烦的。于是就有了整合 AI 的命令行工具。</p>
+              
+              <p>我们这里介绍一个当下(2025 上半年)比较成熟的：<span class="has-note"><span class="note-text">Warp</span><sup>[10]</sup></span>。他的逻辑很简单，就是自动把你输入的指令以及系统给出的报错信息丢给 AI，然后根据 AI 的反馈自动给出你修整建议。</p>
+              
+              <p>多数时候你的操作流程变成了，输入一条指令，如果错了，命令行就自动提示你应该这样输入才正确。然后你再按一下回车，就搞定了。但是因为它本质上是在命令行工具后台绑定了一个 AI 工具，所以一些时候如果你完全不知道该用什么命令，甚至可以直接丢需求给它，比如：</p>
+              
+              <p><pre><code>Use whisper to transcode example.mp3</code></pre></p>
+              
+              <p>然后它会检查一下你的系统里是否安装有 Whisper ——如果没有还会帮你用正确的指令完成安装——并且写出需求对应的正确指令，而且成功率非常高。猜测背后很可能的原因是，Github 的开源代码和文档都被拿去训练 AI 了。所以 AI 是清楚地“知道”当下这个软件在文档中记载的正确用法的。</p>
+              
+              <p>到这里你已经基本可以说是无往而不胜了。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title9">那视频怎么办</h2>
+              
+              <p>铺垫到这里，这个问题已经很好解决了。即使你不知道已经安装过的 <span class="has-note"><span class="note-text">ffmpeg</span><sup>[11]</sup></span> 就是解决这个问题的全部，或者没兴趣去读 ffmpeg 的文档，也只需要在 Warp 里输入类似：</p>
+              
+              <p><pre><code>Convert the example.mp4 to its mp3 version </code></pre></p>
+              
+              <p>然后按下回车，迎接这个美好的时代。</p>
+              
+            </article>
+             
+             <!-- add '.footnotes' class if it's a footnotes para -->
+              <article class="para_block footnotes">
+            
+            <h2 class="subtitle" id="title10">Footnotes</h2>
+              
+              <p>[1] https://github.com/openai/whisper</p>
+              
+              <p>[2] 这样理解 Python 包 - 有很多人在用 Python 解决各自领域遇到的具体问题。这个解决问题的过程中，很多这个问题场景下的逻辑、算法和应用方法都会被抽象出来被用 Python 编码一遍。而这些代码分享出来是可以被其他人复用到类似的问题场景中去的。这个分享出来的代码包，就是 Python 的包（对应术语叫 Package 或者 Library，定义稍有区分，此处不展开）。所以，我们处理同类型问题最高效的方法肯定是看看别人已经写好、测试好、维护好的代码是否够用，而不是自己重新搞一遍。而大多数时候是够用的，因为“问题都已经被解决过了”。  </p>
+              
+              <p>[3] Python 代码需要运行在被称为 Python 解释器(python interpreter)的程序中。  </p>
+              
+              <p>[4] https://alai.me/b/ytdlp.html#title4  </p>
+              
+              <p>[5] Just read the docs! - 常被用来回复论坛上别人提出的，其实很简单，只要读了软件说明文档就不会问的问题。后来 Read the docs 变成一个模因，反向推动了软件开发领域崇尚写好文档的风潮。  </p>
+              
+              <p>[6] Document-Driven Development(DDD): The philosophy behind Documentation-Driven Development is a simple: from the perspective of a user, if a feature is not documented, then it doesn't exist, and if a feature is documented incorrectly, then it's broken.  </p>
+              
+              <p>[7] Linus Torvalds — 芬兰软件工程师，Linux 操作系统和 Git 的原作者，非常传奇，可以想象成软件世界里的“黄药师”。  </p>
+              
+              <p>[8] http://p3.ifengimg.com/a/2018_06/2547685cf4def08_size125_w580_h809.jpg  </p>
+              
+              <p>[9] https://archiveprogram.github.com/arctic-vault  </p>
+              
+              <p>[10] https://www.warp.dev/</p>
+              
+              <p>[11] https://github.com/FFmpeg/FFmpeg</p>
+              
+            </article>
+            
+          </div>
+        </div>
+    </layout-main>
+    <!-- moc -->
+    <layout-left>
+      <div class="moc">
+        
+        <div class="moc_level1">
+          <a href="#title1">
+            <span>TLDR</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title2">
+            <span>安装 Whisper</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title3">
+            <span>包管理和包管理</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title4">
+            <span>Read the Docs</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title5">
+            <span>Git</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title6">
+            <span>Github</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title7">
+            <span>回到主线任务</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title8">
+            <span>整合 AI 的命令行工具</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title9">
+            <span>那视频怎么办</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title10">
+            <span>Footnotes</span>
+          </a>
+        </div>
+        
+        <div class="moc_icons">
+          <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <i class="fa fa-moon-o" aria-hidden="true"></i>
+        </div>
+      </div>
+    </layout-left>
+    <!-- side -->
+    <layout-side>
+        <div id="right-foot">
+        
+        <article id="footnote-[1]" class="side-note">[1] https://github.com/openai/whisper</article>
+        
+        <article id="footnote-[2]" class="side-note">[2] 这样理解 Python 包 - 有很多人在用 Python 解决各自领域遇到的具体问题。这个解决问题的过程中，很多这个问题场景下的逻辑、算法和应用方法都会被抽象出来被用 Python 编码一遍。而这些代码分享出来是可以被其他人复用到类似的问题场景中去的。这个分享出来的代码包，就是 Python 的包（对应术语叫 Package 或者 Library，定义稍有区分，此处不展开）。所以，我们处理同类型问题最高效的方法肯定是看看别人已经写好、测试好、维护好的代码是否够用，而不是自己重新搞一遍。而大多数时候是够用的，因为“问题都已经被解决过了”。  </article>
+        
+        <article id="footnote-[3]" class="side-note">[3] Python 代码需要运行在被称为 Python 解释器(python interpreter)的程序中。  </article>
+        
+        <article id="footnote-[4]" class="side-note">[4] https://alai.me/b/ytdlp.html#title4  </article>
+        
+        <article id="footnote-[5]" class="side-note">[5] Just read the docs! - 常被用来回复论坛上别人提出的，其实很简单，只要读了软件说明文档就不会问的问题。后来 Read the docs 变成一个模因，反向推动了软件开发领域崇尚写好文档的风潮。  </article>
+        
+        <article id="footnote-[6]" class="side-note">[6] Document-Driven Development(DDD): The philosophy behind Documentation-Driven Development is a simple: from the perspective of a user, if a feature is not documented, then it doesn't exist, and if a feature is documented incorrectly, then it's broken.  </article>
+        
+        <article id="footnote-[7]" class="side-note">[7] Linus Torvalds — 芬兰软件工程师，Linux 操作系统和 Git 的原作者，非常传奇，可以想象成软件世界里的“黄药师”。  </article>
+        
+        <article id="footnote-[8]" class="side-note">[8] http://p3.ifengimg.com/a/2018_06/2547685cf4def08_size125_w580_h809.jpg  </article>
+        
+        <article id="footnote-[9]" class="side-note">[9] https://archiveprogram.github.com/arctic-vault  </article>
+        
+        <article id="footnote-[10]" class="side-note">[10] https://www.warp.dev/</article>
+        
+        <article id="footnote-[11]" class="side-note">[11] https://github.com/FFmpeg/FFmpeg</article>
+        
+        </div>
+    </layout-side>
+    <!-- foot -->
+    <layout-footer>
+      <footer>
+        aLai 2022
+      </footer>
+    </layout-footer>
+    <script src="../assets/sn4s_scripts.js" defer></script>
+  </body>
+  </section>
+</html>
