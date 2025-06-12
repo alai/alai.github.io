@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <section id="page">
+  <head>
+    <title>Python 虚拟环境是怎么回事</title>
+    <link rel="stylesheet" href="../assets/sn4s_styles.css">
+    <link rel="stylesheet" href="../assets/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/highlight/styles/base16/solarized-light.min.css">
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </head>
+  <body>
+    <layout-header>
+      <div id="progress-bar"></div>
+    </layout-header>
+    <!-- main -->
+    <layout-main>
+        <div id="post">
+          <div id="post-title">
+            <h1> Python 虚拟环境是怎么回事 </h1>
+          </div>
+          <div id="post-date">
+            <p> 2025-05-27 </p>
+          </div>
+            <!-- Unfinished stack bar feature, commented temporaliy -->
+            <!-- <div id="stack-bar">
+              
+              <div class="stack" id="title1">认识命令行指令</div>
+              
+              <div class="stack" id="title2">实践一下</div>
+              
+              <div class="stack" id="title3">pip vs pip3</div>
+              
+              <div class="stack" id="title4">为什么需要 Python 虚拟环境</div>
+              
+              <div class="stack" id="title5">venv 有点麻烦</div>
+              
+              <div class="stack" id="title6">conda</div>
+              
+              <div class="stack" id="title7">命令行提示符前缀</div>
+              
+              <div class="stack" id="title8">安装 conda 以及一些背景</div>
+              
+            </div> -->
+          <div id="post-body">
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title1">认识命令行指令</h2>
+              
+              <p>我们在<span class="has-note"><span class="note-text">“怎么下载 Youtube 视频”</span><sup>[0]</sup></span> 一篇里曾经提到过，其实有大量没有图形界面、需要在命令行环境下、通过敲入字符来运行的软件存在。而在命令行环境下操作这些软件的指令，就是命令行指令。</p>
+              
+              <p>这些指令虽然作者不同，用途各异，但是发展到今天它们基本上都遵从了一套默认的范式来构建指令的格式。如果能大致了解一下命令行指令的格式，那么初学者看见文档里的各种“指令咒语”也能猜个七八，不致于慌乱。</p>
+              
+              <p>用我们遇到过的 pip 安装 openai-whisper 包的指令来举例子：</p>
+              
+              <p><pre><code>pip install openai-whisper</code></pre></p>
+              
+              <p>这是一个很典型的命令行指令格式：</p>
+              
+              <p><pre><code>command [options] [arguments]</code></pre></p>
+              
+              <p>放在最前面的就是指令(也被叫做“命令”，command)，大多数时候它就是软件工具的名称或者名称的变体。比如早期的软件就崇尚极简：copy 的指令是 <code>cp</code>，move 的指令是<code>mv</code>，list 的指令是<code>ls</code>等等，还有我们接触过的 homebrew 的指令是 <code>brew</code>。</p>
+              
+              <p>指令语句中每一部分都以空格间隔。指令之后部分一般是指令的选项部分(option)。选项是用来告诉指令使用哪一个功能或者以何种形式使用指令功能的。选项之后紧跟的是参数部分(argument)，参数一般是前面选项操作所对应的目标。而选项和参数可以有多个或多组。我们来看一个例子：</p>
+              
+              <p><pre><code>ls -a -l /path/to/directory</code></pre></p>
+              
+              <p>这条命令行指令执行的是 <code>ls</code> (也就是上面提到过的 list， 列出目录内容工具)；执行的选项是 <code>-l</code> （以“长格式”——就是比较完整的格式显示），和 <code>-a</code> （将目录中隐藏内容也显示出来），这俩都是选项，用空格分隔，谁在前谁在后无所谓。参数是 <code>/path/to/directory</code> （也就是要列出内容的目录名称）。这条指令语句拼在一起就是：列出 <code>/path/to/directory</code> 目录里的内容，包含隐藏文件和文件夹，同时显示的时候使用“长格式”。</p>
+              
+              <p>有时目录名称里本身带有空格，这会把指令打乱，因为指令是用空格来区分元素的。所以遇到有空格的指令参数，最简单的方法就是用引号把它框起来。</p>
+              
+              <p><pre><code>ls -a -l "/path/to/A directory"</code></pre></p>
+              
+              <p>另一种方法，看起来不那么直观，但是也被广泛使用，所以也有必要了解一下。就是使用“转译字符”<code>\</code>来宣告它后面跟着的字符不是命令行格式里的一部分。比如上面这个指令也经常被写成下面这样，来告诉命令行，这个<code>\</code>后面的空格可不是给你的空格。</p>
+              
+              <p><pre><code>ls -a -l /path/to/A\ directory</code></pre></p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title2">实践一下</h2>
+              
+              <p>知道了这个逻辑，现在让我们再来看一下我们遇到过的 pip 包安装指令：</p>
+              
+              <p><pre><code>pip install openai-whisper</code></pre></p>
+              
+              <p>这里指令当然就是 <code>pip</code> (Python 的包安装器工具的指令名称)；选项是 <code>install</code> （也就使用 pip 的安装功能。除了安装功能以外，pip 还有诸如<code>uninstall</code>, <code>download</code>,<code>list</code> .. 不少功能。所以叫它 Python 的“包安装器”有点不准确，而应该叫 Python 的包管理器。但是因为它的英文就叫 package installer 所以中文多数场合也就直译了）。最后参数是 <code>openai-whisper</code>。这条指令语句拼在一起就是：使用 pip 的 install 功能，安装 openai-whisper 这个包。</p>
+              
+              <p>让我们再来看一条稍微复杂一点命令行指令：</p>
+              
+              <p><pre><code>ffmpeg -i input\ video.webm -c:v libx264 output.mp4</code></pre></p>
+              
+              <p>这里的指令是<code>ffmpeg</code>没问题，后面有些干扰的符号，不用管，我们只需关注空格分隔出来的元素就好。需要注意的是，空格前面如果是转译字符<code>\</code>，那么这个空格就是参数文本里的，而不是分隔命令行元素用的。所以这里有两组选项和参数，第一组是<code>-i</code>和<code>input\ video.webm</code>(使用了转移字符，相当于<code>input video.webm</code>)；第二组是<code>-c:v</code>和<code>libx264</code>。</p>
+              
+              <p>其实这条指令里还有一组隐含的选项参数，就是最后的输出文件名<code>output.mp4</code>。只不过 ffmpeg 认为我是个编码工具，默认总要输出文件的，就没有给输出文件名再定义一个选项名称。很多类似的工具在这个环节，可能会要在输出文件名前写个 <code>-output</code>或者 <code>-o</code>之类的。不过问题不大，到这里我们基本上可以根据格式看出一条命令行指令在干什么了。至于具体的选项是什么功能，现在已经基本上不需要学习和记忆了，遇到了丢给 AI 问一下就好。</p>
+              
+              <p>现在我们可以讨论 <code>pip</code> 和 <code>pip3</code>的区别了，而它们的区别，多少跟我们将要讨论的 Python 虚拟环境问题是关联的。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title3">pip vs pip3</h2>
+              
+              <p>现在我们可以来解释<code>pip install</code> 和 <code>pip3 install</code>的区别是什么了。按照上面的格式逻辑我们知道 <code>pip</code> 和 <code>pip3</code> 是两个不同的指令，他们实际上对应的分别是 Python3 发布之前和之后的两个针对不同 Python 版本的包安装工具。</p>
+              
+              <p>因为 Python3 是 Python 的一次很大升级，引入了大量的新特性。这就造成 Python3 开发的程序没法在 Python2 上执行(被称为“向前不兼容” backwards-incompatible)。而不难想见的是，Python3 发布以后会有很多用 Python2 开发的程序没有办法改写或重写成 Python3 版本<span class="has-note"><span class="note-text">\*</span><sup>[1]</sup></span>。最常见的情况是，Python2 开发的程序跑得好好的，没必要为了提升一些性能来重写它。这样一来，就会有不少场景同时存在 Python2 和 Python3 开发的程序，于是在 Python 包安装管理时就需要区分是 pip 还是 pip3。</p>
+              
+              <p>如果我发现自己的系统里既有 pip 也有 pip3，那我该执行哪一个呢？</p>
+              
+              <p>先说一个好消息，如果你已经折腾过一圈安装 Python 之类的操作，你手上的 pip 和 pip3 很有可能是相同的。你可以试一下下面两个指令，如果他们的输出是一样的，说明这两个命令已经被指向了同一个工具实体，所以用哪个都可以了。</p>
+              
+              <p><pre><code>which python3</code></pre></p>
+              
+              <p><pre><code>which python</code></pre></p>
+              
+              <p>那如果输出结果不一样呢？也就是说我的系统里既有 Python2 也有 Python3 怎么办？我该用哪个？</p>
+              
+              <p>没事，反正我们也<span class="has-note"><span class="note-text">不准备用 MacOS 系统内置的 Python 版本</span><sup>[2]</sup></span>，而是要搭自己的 Python 虚拟环境。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title4">为什么需要 Python 虚拟环境</h2>
+              
+              <p>想象一下一家很好的餐厅，要确保它出餐品质的稳定，那么烹饪某一道菜的厨具、酱料调料甚至装盘用的餐具最好都是固定的。现在如果这家餐厅在别的城市开了个分店，那么保证出品的好方法就是把整套厨具、酱料调料、餐具都原封不动的复刻一份去新店。如果把 Python 程序比作这家餐厅的菜，那么这套餐厨具、酱调料就是成产它的环境。</p>
+              
+              <p>现在如果我们把系统已有 Python 环境(比如 MacOS 内置的 Python 环境)比喻成一个<span class="has-note"><span class="note-text">公共厨房</span><sup>[3]</sup></span>，那么在生产某些菜的时候总会遇到厨具规格不对、缺少特色调料之类的环境不支持的情况。我们固然可以通过调整厨具、替换或增加调料的方式来调适。但是很快我们又会遇到下一个需要调适环境才能烹饪的菜品。于是这间公共厨房很快就会变得混乱不堪，矛盾重重。</p>
+              
+              <p>而虚拟环境就是根据需求建新的厨房。这个菜需要这些餐厨具、酱调料，我们就专门为它专门搭一个厨房。另一个菜在这个厨房做不了？没事，我们完全可以为它再另搭一套生产环境。</p>
+              
+              <p>一个好消息是，多数时候菜品对生产环境的要求并没有那么的高。他们往往只是要求比如说 Python 版本高于 3.x，或者某一个包的版本高于 x.y 就好。所以现实中我们并不会真的需要为每一个软件都搭建一个专门的厨房，也就不必过早的担心有太多厨房需要管理该如何是好的问题。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title5">venv 有点麻烦</h2>
+              
+              <p>那么我们如果搭建和管理这些厨房呢？如果你去网上搜索搭建 Python 虚拟环境的方法，包括不少建议在虚拟环境中安装执行的软件的官方文档里，很多时候就只是叫你执行<code>python -m venv ...</code>来创建一个独立的 Python 虚拟环境。其实这事儿没看起来的那么简单，也往往没那么顺利。先放一个一家之言的结论，venv 对于新手来说并不容易上手。</p>
+              
+              <p>首先，使用 venv 只基于当前版本的 Python 解释器。这是什么意思？还是用厨房的例子。现在我们把 Python 代码的执行环境，也就是所谓的解释器，比作厨房里的灶台，它是所有其他厨具工作的台面。现在 venv 正常情况下只是在这个灶台上隔离出不同的工作区，某一个工作区里有针对某一个菜品专门的调料和炊具等等。但是如果遇到某个软件需要一个不同规格的灶台（也就是 Python 执行环境，也就是一个与当前环境不同版本的 Python）的时候，venv 也能办到，不过它需要系统里已经安装有了那个需要的 Python 版本。</p>
+              
+              <p>这就好像说，哦你需要一个不同的灶台，我来看看这间厨房里就有一个那种你需要的规格，来来来我们可以移到那个灶台上去。但是如果系统里没有安装有需要的 Python 版本，那你得自己去装一个。这是个新手很容易撞墙的环节，因为我们缺乏的正是在同一个系统下安装和维护多个 Python 版本的能力。在 venv 视角下这是个"Python 之外"的问题，所以它不管。</p>
+              
+              <p>另一个容易产生的疑惑是<code>python -m venv ...</code>这个指令，看起来就和前面提到过的<code>pip install ..</code>这样的指令不一样。我们已经知道了，如果按照命令行指令的通用范式，pip 一看就是个“堂堂正正的”工具名称，是一条单独的指令。而我们费了半天劲才搞清楚原来 <code>python -m venv</code> 里的 venv 也是个工具，而且是个可以搭建出多个 Python 环境的了不起的工具。可是它却“畏畏缩缩的”只能挂在 <code>python -m</code> 的后面以一个模块（-m for model）的形式出现。</p>
+              
+              <p>背后的原因挺复杂的，但还是有必要提一下。一个简化的故事版本是，因为一开始 Python 并没有设计虚拟环境这个功能。而是被一个由个人开发的第三方工具(virtualenv)先实现了，而且它的设计被广泛接受。之后<span class="has-note"><span class="note-text">Python 核心团队和社区</span><sup>[4]</sup></span>觉得我们有必要在 Python 中原生的实现这个功能。这才以模块的形式给 Python3.3 开始另加上了 venv 这个工具。而且因为这层“官方背景”的存在，venv 是个被开发地很精巧、也很高效的方案。但是也正是因为是事后的、站在社区核心视角的改动，所以 venv 工具的设计逻辑对于新手来说有点晦涩。另外我们上面提到的，venv 应该值得是个像 pip 一样，以独立工具的身份存在的问题也被讨论过。而且一度在 3.6、3.7、3.8 几个版本里被改成了独立的工具 pyvenv，不过后来又被改回了 venv 模块。你现在还能在一些文档上看到让你用 pyvenv 创建虚拟环境的，而这些波折和混乱也是很容易让新手困惑的一个背景。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title6">conda</h2>
+              
+              <p>那我们就先不用 venv，换个其他工具。需要说明的是，Python 虚拟环境的创建和管理工具不止一个，这里我们选择介绍 conda 只是因为它的命令逻辑对新手更友好。但是我们要知道不同的工具有不同的优势也必然有其弱项，所以我们并不是再讨论哪个工具更好，而只是在初上手时，哪个工具更容易帮我们理解 Python 虚拟环境这个概念。我们来看一下 conda 的指令：</p>
+              
+              <p><pre><code>conda create -n myenv python=3.9</code></pre></p>
+              
+              <p>上面这条指令让我们来望文生义地猜一下也能大概知道是，使用 conda 的 create 模块来创建一个名字(<code>-n</code>)叫<code>myenv</code>的虚拟环境，这个虚拟环境的 Python 版本是 <code>3.9</code>。</p>
+              
+              <p><pre><code>conda env list</code></pre></p>
+              
+              <p>看看我们系统里已经有哪些 conda 创建的虚拟环境：</p>
+              
+              <p><pre><code class="language-bash">base                  *  /Users/alai/miniforge3
+py310                    /Users/alai/miniforge3/envs/py310
+myenv                    /Users/alai/miniforge3/envs/myenv</code></pre></p>
+              
+              <p>好了，现在我们切换到刚创建的虚拟环境：</p>
+              
+              <p><pre><code>conda activate myenv</code></pre></p>
+              
+              <p>用完了，从虚拟环境里退出来，回到公共厨房：</p>
+              
+              <p><pre><code>conda deactivate</code></pre></p>
+              
+              <p>是不是逻辑还挺清楚的。用 conda 的一个好处就是把安装不同 Python 版本这个问题一并解决掉了。相当于灶台、厨具、调料都在它的能力范围之内。</p>
+              
+              <p>每当你建立一个新的灶台时，它就另起一个目录(看上面 <code>conda env list</code>的输出里)，再一股脑的把所需版本的 Python 解释器、包都下载复制一份进去。然后当你激活(<code>conda activate ...</code>)这个新灶台时，它就把你系统里运行 Python 相关的指令比如 <code>python</code>和 <code>pip3</code>这些都指向到这个目录里对应的工具上。当你退出虚拟环境(<code>conda deactivate</code>)的时候再指回来。就这么简单。</p>
+              
+              <p>这里需要注意的一点，当你在某一个虚拟环境中时，所有的操作，比如我们上面提到的安装 openai-whisper 操作，都只发生在这个环境下。如果你退出回到系统默认的环境，或者切换去另一虚拟环境，这些操作对他们来说都是不曾发生的。所以如果遇到，我明明记得我已经安装过了这个包，怎还是跑不起来的时候，需要先确认一下自己是不是切换到了当时的虚拟环境里。</p>
+              
+              <p>问题来了，我怎么知道我现在在哪个虚拟环境下呢？进进出出或者时间长了我不记得是否退出了前一个使用的虚拟环境怎么办？</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title7">命令行提示符前缀</h2>
+              
+              <p>我们可以用上面提到过的列出虚拟环境的指令 <code>conda env list</code>，注意一下结果列表里带有<code>*</code>号的就是当前所在的环境。其实还有一个更直观和简单的方法，就是看命令行提示符前缀。</p>
+              
+              <p>命令行我们已经很熟悉了，命令行提示符就是在命令行环境下等待我们输入指令的那句话。默认的一般显示当前用户名称和设备名，比如我眼下的命令行提示符是这样的：</p>
+              
+              <p><pre><code>(base) alai@Mac-mini:~ $ </code></pre></p>
+              
+              <p>你可能已经发现了，这个提示符前面有个<code>(base)</code>就是告诉我们当前所在的虚拟环境的名称。如果我切换到 myenv 虚拟环境里，我的提示符就变成了：</p>
+              
+              <p><pre><code>(myenv) alai@Mac-mini:~ $ </code></pre></p>
+              
+              <p>命令行提示符是个可定制程度很高的东西，过去几十年里每天对着命令行工作的这些人，一直在乐此不疲的“美化”自己的提示符。有的要显示当前时间，有的要显示当前正在开发的代码的版本号，有的要显示不同的颜色，有的一定要加上一个企鹅图标。结果就导致出现了不同的命令行环境(shell)，各自又有很多不同的主题(theme)。结论是，对于初学者来说只要找一个支持显示当前环境名称的命令行提示符 theme 就好。而今天自己研究怎么配置 shell 和 theme 的意义不大，所以最简单的方法就是找一个支持这个功能的命令行工具软件。</p>
+              
+              <p>如果在我们讲到<span class="has-note"><span class="note-text">“整合 AI 的命令行工具”</span><sup>[5]</sup></span>时已经安装了 warp 的话，那这个问题就已经解决了。它默认的就会显示当前所在的环境名称。而且如我们介绍过的，warp 的另一大帮助就是当你搞不清某一条命令怎么写的时候，可以直接用自然语言给它指令。比如：</p>
+              
+              <p><pre><code>create a new python 3.11 virtual env with conda</code></pre></p>
+              
+              <p>AI 时代，什么命令行指令格式啦、选项参数啦，都已是过眼云烟了。</p>
+              
+            </article>
+             
+            
+              <article class="para_block">
+            
+            <h2 class="subtitle" id="title8">安装 conda 以及一些背景</h2>
+              
+              <p>Conda 和我们这个系列里接触到的其它软件不大一样，它不是通过包管理，而是很传统的通过下载安装包的方式来安装的。不过对于我们大多数从 Windows 生态走过来的初学者，这种方式会反而更容易接受。</p>
+              
+              <p>去到 conda 的<span class="has-note"><span class="note-text">下载页面</span><sup>[6]</sup></span>，下载对应的 Miniconda Installer 安装包，然后一步一步安装就好。这里需要解释一下 miniconda 和 conda 的关系。我们上面介绍了 conda 作为 Python 虚拟环境工具的一面，但其实它也是个包管理工具，可以<span class="has-note"><span class="note-text">像 pip 一样安装和管理 Python 包</span><sup>[7]</sup></span>。我们可以把 conda 理解为 pip + vitualenv 的合体。</p>
+              
+              <p>我们前面已经讲到，因为 conda 可以解决一些 venv 无法解决的“Python 之外”的问题，所以可以理解 conda 必然是需要一些超出 Python 之外的系统工具和配置才能工作的。也就是说，它也得有个灶台才跑得起来。而 miniconda 就是 conda 的灶台，包含了运行 conda 所需要的最小支持。之所以强调最小，是因为如果去到 conda 的网站还会看见一个软件叫 anaconda，它就是 conda 包管理的集大成者，所谓完整发行版，包含了 200 多个常用的包。搞数据科学或者机器学习，可以一次性搞定这些包的安装，不用自己处理互相支持和冲突这些问题。这里提一下，再看见 conda, miniconda ,anaconda 就不会头晕了。</p>
+              
+            </article>
+             
+             <!-- add '.footnotes' class if it's a footnotes para -->
+              <article class="para_block footnotes">
+            
+            <h2 class="subtitle" id="title9">Footnotes</h2>
+              
+              <p>[0] https://alai.me/b/ytdlp.html</p>
+              
+              <p>[1] Python2 从 2000 年发布到 2020 年彻底不支持，持续存在了 20 年。当今的主力是 Python3，从 2008 年发布至今才到 Python3.11 版本。</p>
+              
+              <p>[2] 这是个比较复杂的问题。可以简单地理解为，MacOS 自带的 Python 更多的是考虑支持自己系统的功能，或者说压根没准备给用户用。用户要用 Python，你就自己搭自己的环境去。这里很多新手就掉坑了，明明系统里有 Python，我按照网上教程一通操作，结果各种跑不通，敢情这个 Python 不是给我准备的。</p>
+              
+              <p>[3] MacOS 这间厨房压根就没打算让用户使用，所以严格来说都算不上“公共”。</p>
+              
+              <p>[4] 他们有个议事和治理机制叫 PEP - Python Enhancement Proposal，挺有意思的：https://peps.python.org/pep-0000/</p>
+              
+              <p>[5] https://alai.me/b/asr.html#title8</p>
+              
+              <p>[6] https://www.anaconda.com/download/success</p>
+              
+              <p>[7] 其实还不止 Python 包，它还支持其它语言的包管理，比如 R，Ruby (和 Python 完全不同的语言)之类。另外准确的说 pip 和 conda 各自对应的包的来源是不同的，这里面有比较复杂的背景。简单的说，pip 更多的是源码包，相当于 IKEA 家具那样，来的是散件需要自己拼装的，所以有可能失败，有可能冲突；而 conda 更多的是预编译的二进制包，相当于成品家具，失败和冲突的情况比较少，但是会出现软件需要的包它没有的情况。用哪个不用哪个还不好一概而论。比较保险的方法是，在包管理中用了一个，就尽量坚持用这个，不要混着用；或者至少对同一个软件包不要混着用这两个工具。</p>
+              
+            </article>
+            
+          </div>
+        </div>
+    </layout-main>
+    <!-- moc -->
+    <layout-left>
+      <div class="moc">
+        
+        <div class="moc_level1">
+          <a href="#title1">
+            <span>认识命令行指令</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title2">
+            <span>实践一下</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title3">
+            <span>pip vs pip3</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title4">
+            <span>为什么需要 Python 虚拟环境</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title5">
+            <span>venv 有点麻烦</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title6">
+            <span>conda</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title7">
+            <span>命令行提示符前缀</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title8">
+            <span>安装 conda 以及一些背景</span>
+          </a>
+        </div>
+        
+        <div class="moc_level1">
+          <a href="#title9">
+            <span>Footnotes</span>
+          </a>
+        </div>
+        
+        <div class="moc_icons">
+          <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <i class="fa fa-moon-o" aria-hidden="true"></i>
+        </div>
+      </div>
+    </layout-left>
+    <!-- side -->
+    <layout-side>
+        <div id="right-foot">
+        
+        <article id="footnote-[0]" class="side-note">[0] https://alai.me/b/ytdlp.html</article>
+        
+        <article id="footnote-[1]" class="side-note">[1] Python2 从 2000 年发布到 2020 年彻底不支持，持续存在了 20 年。当今的主力是 Python3，从 2008 年发布至今才到 Python3.11 版本。</article>
+        
+        <article id="footnote-[2]" class="side-note">[2] 这是个比较复杂的问题。可以简单地理解为，MacOS 自带的 Python 更多的是考虑支持自己系统的功能，或者说压根没准备给用户用。用户要用 Python，你就自己搭自己的环境去。这里很多新手就掉坑了，明明系统里有 Python，我按照网上教程一通操作，结果各种跑不通，敢情这个 Python 不是给我准备的。</article>
+        
+        <article id="footnote-[3]" class="side-note">[3] MacOS 这间厨房压根就没打算让用户使用，所以严格来说都算不上“公共”。</article>
+        
+        <article id="footnote-[4]" class="side-note">[4] 他们有个议事和治理机制叫 PEP - Python Enhancement Proposal，挺有意思的：https://peps.python.org/pep-0000/</article>
+        
+        <article id="footnote-[5]" class="side-note">[5] https://alai.me/b/asr.html#title8</article>
+        
+        <article id="footnote-[6]" class="side-note">[6] https://www.anaconda.com/download/success</article>
+        
+        <article id="footnote-[7]" class="side-note">[7] 其实还不止 Python 包，它还支持其它语言的包管理，比如 R，Ruby (和 Python 完全不同的语言)之类。另外准确的说 pip 和 conda 各自对应的包的来源是不同的，这里面有比较复杂的背景。简单的说，pip 更多的是源码包，相当于 IKEA 家具那样，来的是散件需要自己拼装的，所以有可能失败，有可能冲突；而 conda 更多的是预编译的二进制包，相当于成品家具，失败和冲突的情况比较少，但是会出现软件需要的包它没有的情况。用哪个不用哪个还不好一概而论。比较保险的方法是，在包管理中用了一个，就尽量坚持用这个，不要混着用；或者至少对同一个软件包不要混着用这两个工具。</article>
+        
+        </div>
+    </layout-side>
+    <!-- foot -->
+    <layout-footer>
+      <footer>
+        aLai 2022
+      </footer>
+    </layout-footer>
+    <script src="../assets/sn4s_scripts.js" defer></script>
+  </body>
+  </section>
+</html>
